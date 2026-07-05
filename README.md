@@ -1,33 +1,34 @@
-# Svazer Bot Dev 🤖
-**Portofolio & Digital Playground of Svazer**
+# Svazer Corp. 🚀
+**Digital Portfolio & Ecosystem Playground**
 
-Selamat datang di repositori portofolio resmi **Svazer Bot Dev**. Ini adalah ruang digital personal tempat saya memamerkan hasil karya, eksperimen integrasi AI, serta pengembangan ekosistem bot WhatsApp dan otomatisasi web.
+Welcome to the official repository of **Svazer Corp.** This is our digital playground where we showcase our products, AI integrations, web applications, and automation ecosystems.
 
 ## 🚀 Projects Ecosystem
-Website ini adalah etalase dari berbagai sistem canggih yang telah saya bangun:
+This portfolio highlights the various advanced systems built by Svazer Corp:
 
-- **Takina MD**: Bot WhatsApp Multi-Device super lengkap dengan 508+ plugin, integrasi 43+ AI, dan sistem RPG.
-- **Sewa Bot System**: Platform otomatisasi penyewaan bot WhatsApp (hands-free) dengan payment gateway terintegrasi.
-- **Jadibot Engine**: Sistem kloning inovatif untuk menghubungkan nomor WhatsApp ke dalam bot secara mandiri.
-- **Alsya API**: Layanan REST API komprehensif (low-latency) untuk mendukung ekosistem bot dan aplikasi web.
-- **Svazer CDN**: Content Delivery Network (CDN) yang cepat dan andal untuk hosting aset media bot.
-- **Afixd AI**: Asisten chatbot multimodal tingkat lanjut (Teks, Gambar, Suara) bertenaga 10+ AI terbaik.
-- **Axd Downloader**: Platform all-in-one downloader untuk mengunduh media dari berbagai jejaring sosial tanpa batas.
-- **Axd Player**: Web pemutar musik cerdas untuk streaming dan download MP3 langsung dari YouTube.
-- **Alfixd Image Tools**: Studio editing visual berbasis AI dengan fitur Upscale, Remove BG, dan Image Generation dari teks.
+- **Takina MD**: An advanced WhatsApp Multi-Device bot with 508+ plugins, 43+ AI integrations, and an RPG system.
+- **Sewa Bot System**: An automated WhatsApp bot rental platform (hands-free) with integrated payment gateways.
+- **Jadibot Engine**: An innovative cloning system that connects WhatsApp numbers into standalone bots.
+- **Alsya API**: A comprehensive, low-latency REST API service built to support bots and web apps.
+- **Svazer CDN**: A blazing-fast Content Delivery Network tailored for hosting bot media assets securely.
+- **Alfixd AI**: An advanced multimodal chatbot assistant (Text, Image, Voice) powered by 10+ top-tier AI models.
+- **Axd Downloader**: An all-in-one downloading platform for saving media from various social networks without limits.
+- **Axd Player**: A smart web music player to stream and download high-quality MP3s directly from YouTube.
+- **Alfixd Image Tools**: An AI-powered visual editing studio featuring Upscaling, BG Removal, and text-to-image generation.
 
 ## 🛠️ Tech Stack
-Portofolio ini dibangun dengan mengutamakan performa tinggi dan estetika modern:
-- **Framework**: [Astro](https://astro.build/) - Untuk *loading speed* ultra-cepat.
-- **Styling**: Vanilla CSS dengan tipografi tebal, *dark mode* brutalist, dan micro-animasi yang mulus.
-- **Deployment**: Vercel (CI/CD langsung dari GitHub).
+This portfolio is built with high performance and modern aesthetics in mind:
+- **Framework**: [Astro](https://astro.build/) - For ultra-fast static loading speeds.
+- **Styling**: Vanilla CSS with brutalist dark mode themes, bold typography, and smooth micro-animations.
+- **Backend (Bot & API)**: Node.js, Baileys, SQLite (WAL mode).
+- **Deployment**: Vercel (CI/CD directly from GitHub).
 
 ## 📓 Logbook & Collected Fragments
-Portofolio ini tidak sekadar memamerkan hasil akhir, melainkan sebuah rekam jejak. Semua eksperimen, dokumentasi pengembangan, *snippet* kode, dan coretan ide dimuat secara jujur di bagian **Logbook**. Saya percaya bahwa *"building in public"* adalah cara terbaik untuk bertumbuh.
+This portfolio isn't just a showcase—it's a record of our journey. All experiments, development documentation, code snippets, and messy ideas are documented honestly in the **Logbook**. We believe that *"building in public"* is the ultimate way to grow.
 
 ---
 
 ## 🤝 Let's Connect
-Tertarik dengan ekosistem otomatisasi, pengembangan bot WhatsApp, atau integrasi AI cerdas? Mari berdiskusi dan merealisasikan ide-ide brilian bersama.
+Interested in the automation ecosystem, web apps, or smart AI integration? Let's discuss and build brilliant ideas together.
 
 [GitHub Svazer](https://github.com/svazerID)

@@ -9,7 +9,7 @@ interface Props {
   description?: string;
 }
 
-const { title, backgroundColor, description = "Svazer Bot Dev - Project Detail" } = Astro.props;
+const { title, backgroundColor, description = "Svazer Corp. - Project Detail" } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ const { title, backgroundColor, description = "Svazer Bot Dev - Project Detail" 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} | Svazer Bot Dev</title>
+    <title>{title} | Svazer Corp.</title>
     
     <!-- Lucide Icons -->
     <script is:inline src="https://unpkg.com/lucide@0.460.0"></script>
