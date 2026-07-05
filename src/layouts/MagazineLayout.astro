@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  backgroundColor?: string;
+  description?: string;
+}
+
+const { title, backgroundColor, description = "Svazer Bot Dev - Project Detail" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | Svazer Bot Dev</title>
+    
+    <!-- Lucide Icons -->
+    <script is:inline src="https://unpkg.com/lucide@0.460.0"></script>
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <ClientRouter />
+  </head>
+  <body id="top" class="magazine-layout page-wrapper" data-project-bg={backgroundColor} style={backgroundColor ? `background-color: ${backgroundColor};` : ''}>
+    <div class="custom-cursor" transition:persist></div>
+    
+    <header class="project-header">
+      <div class="header-inner">
+        <a href="/" class="project-logo" data-hover>
+          <span>SVAZER</span>
+          <span class="anchor-sub">BOT DEV</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/" class="nav-link" data-hover>Studio</a>
+          <a href="/logbook" class="nav-link" data-hover>Logbook</a>
+          <a href="/resume" class="nav-link" data-hover>Resume</a>
+        </nav>
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger-btn" aria-label="Toggle menu">
+          <div class="hamburger-box">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+          </div>
+        </button>
+      </div>
+    </header>
+
+    <!-- Full-Screen Hamburger Menu Overlay -->
+    <div class="mobile-menu-overlay">
+      <nav class="mobile-nav-links">
+        <a href="/" class="mobile-nav-link">Studio</a>
+        <a href="/logbook" class="mobile-nav-link">Logbook</a>
+        <a href="/resume" class="mobile-nav-link">Resume</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <div class="mobile-socials">
+          <a href="https://github.com/svazerID" target="_blank" rel="noreferrer">GITHUB</a>
+          <a href="https://www.instagram.com/rdnmshtguy" target="_blank" rel="noreferrer">INSTAGRAM</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- The actual content injected here -->
+    <slot />
+    
+    <Footer />
+
+    <script is:inline src="/project.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+---
+import Manifesto from './Manifesto.astro';
+
+interface Props {
+  className?: string;
+  variant?: 'massive' | 'minimal';
+}
+
+const { className = "", variant = "minimal" } = Astro.props;
+---
+
+<footer class={`footer-base ${variant === 'massive' ? 'footer-massive' : 'footer-minimal'} ${className}`} id="social">
+  {variant === 'massive' && (
+    <div class="footer-huge-links">
+      <a href="#" id="manifesto-btn" data-hover>MANIFESTO</a>
+      <a href="https://github.com/svazerID" target="_blank" rel="noreferrer" id="github-btn" data-hover>GITHUB</a>
+      <a href="https://www.instagram.com/rdnmshtguy" target="_blank" rel="noreferrer" id="linkedin-btn" data-hover>INSTAGRAM</a>
+      <a href="https://wa.me/62895615063060" target="_blank" rel="noreferrer" id="goodreads-btn" data-hover>WHATSAPP</a>
+      <a href="https://svazer.eu.cc" target="_blank" rel="noreferrer" id="instagram-btn" data-hover>WEBSITE</a>
+    </div>
+  )}
+  <div class="footer-bottom-meta" style={variant === 'minimal' ? "border-top: none; padding-top: 1rem; padding-bottom: 2rem;" : ""}>
+    <p>© 2026 SVAZER BOT DEV.</p>
+    <a href="#top" class="back-to-top" data-hover>BACK TO TOP ↑</a>
+  </div>
+</footer>
+
+<Manifesto />

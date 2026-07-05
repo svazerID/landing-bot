@@ -1,0 +1,183 @@
+---
+// src/components/Manifesto.astro
+---
+
+<div class="manifesto-overlay" id="manifesto-overlay">
+  <div class="manifesto-glass-card">
+    <div class="manifesto-content">
+      <button class="manifesto-close" id="manifesto-close" aria-label="Close manifesto">
+        <i data-lucide="x" style="width: 24px; height: 24px;"></i>
+      </button>
+      
+      <div class="manifesto-header">
+        <span class="manifesto-kicker">THE NORTH STAR</span>
+        <h2 class="manifesto-title">IDEAS AND MESSY.</h2>
+      </div>
+
+      <div class="manifesto-scroll-area">
+        <div class="manifesto-body">
+          <p>This is not a portfolio. A portfolio is static. This is an active studio—a living organism where idealism meets execution.</p>
+          <p>We embrace the tension between the structured architecture of a design system and the chaotic beauty of raw creativity. Behind every pristine user interface is a "Museum of Mess"—abandoned hobbies, wild ideas, and the vulnerable human side of creation.</p>
+          <p>There is always a way to succeed. But you have to start building.</p>
+        </div>
+      </div>
+      
+      <div class="manifesto-footer">
+        <p>© 2026 SVAZER BOT DEV // BUILT TO AUTOMATE</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .manifesto-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+  }
+
+  .manifesto-overlay.active {
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .manifesto-glass-card {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 64px;
+    transform: translateY(40px) scale(0.98);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  }
+
+  .manifesto-overlay.active .manifesto-glass-card {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .manifesto-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .manifesto-close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    background: transparent;
+    border: none;
+    color: var(--accents-5);
+    cursor: none !important;
+    padding: 8px;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .manifesto-close:hover {
+    color: #fff;
+    transform: rotate(90deg);
+  }
+
+  .manifesto-kicker {
+    display: block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accents-5);
+    margin-bottom: 16px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .manifesto-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .manifesto-body {
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    color: var(--accents-7);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  .manifesto-body p {
+    margin-bottom: 24px;
+  }
+
+  .manifesto-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 32px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accents-5);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 768px) {
+    .manifesto-glass-card {
+      padding: 40px 24px;
+      height: 100%;
+      max-height: 100%;
+      border: none;
+      background: #000;
+      display: flex;
+      align-items: center;
+    }
+    .manifesto-title {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  function initManifesto() {
+    const manifestoBtn = document.getElementById('manifesto-btn');
+    const manifestoOverlay = document.getElementById('manifesto-overlay');
+    const manifestoClose = document.getElementById('manifesto-close');
+
+    if (manifestoBtn && manifestoOverlay && manifestoClose) {
+      manifestoBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        manifestoOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+
+      const closeManifesto = () => {
+        manifestoOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      manifestoClose.addEventListener('click', closeManifesto);
+
+      manifestoOverlay.addEventListener('click', (e) => {
+        if (e.target === manifestoOverlay) closeManifesto();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && manifestoOverlay.classList.contains('active')) closeManifesto();
+      });
+    }
+  }
+
+  document.addEventListener('astro:page-load', initManifesto);
+</script>

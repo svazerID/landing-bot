@@ -1,0 +1,60 @@
+---
+import { urlFor } from '../utils/sanity';
+
+interface Props {
+  project: any;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+
+const paddedIndex = String(index + 1).padStart(2, '0');
+const reverseClass = index % 2 !== 0 ? 'reverse' : '';
+
+// Handle background color
+const colors = ['#1a0f30', '#121f1a', '#300a0a'];
+const projectBgColor = project.themeHex || colors[index % colors.length];
+
+const heroImageUrl = typeof project.homepageImage === 'string' ? project.homepageImage : (project.homepageImage ? urlFor(project.homepageImage).url() : null);
+---
+
+<div class="app-panel section-snap" data-bg={projectBgColor}>
+  <div class={`app-panel-content ${reverseClass}`} id={`app-${index}`}>
+    <div class="app-text-column">
+      <div class="app-index">{paddedIndex}</div>
+      <h3 class="app-title">{project.title}</h3>
+      <p class="app-desc">{project.description || "Project details coming soon. Manage this content in your Sanity Studio."}</p>
+      <div class="app-meta">
+        <a href={`/projects/${project.slug.current}`} class="app-view-link" data-hover>Learn more</a>
+        {project.projectUrl && (
+          <a href={project.projectUrl} target="_blank" rel="noreferrer" class="app-view-link" data-hover>
+            View Project <i data-lucide="arrow-up-right" style="margin-left: 8px; width: 16px;"></i>
+          </a>
+        )}
+      </div>
+    </div>
+    <div class="app-visual-column">
+      {project.device === 'iphone' ? (
+        <div class="glass-iphone">
+          <div class="iphone-notch"></div>
+          <div class="iphone-screen" style={heroImageUrl ? `background: url('${heroImageUrl}') top center/cover no-repeat;` : ''}></div>
+        </div>
+      ) : (
+        <div class="glass-browser">
+          <div class="glass-header">
+            <div class="glass-dot"></div><div class="glass-dot"></div><div class="glass-dot"></div>
+          </div>
+          <div class="glass-body" style={heroImageUrl ? `background: url('${heroImageUrl}') top left/cover no-repeat; height: 100%; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;` : ''}>
+            {!heroImageUrl && (
+              <>
+                <div class="glass-skeleton"></div>
+                <div class="glass-skeleton"></div>
+                <div class="glass-skeleton"></div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</div>

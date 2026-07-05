@@ -1,0 +1,23 @@
+---
+import { urlFor } from '../utils/sanity';
+
+interface Props {
+  currentlyReading: any;
+}
+
+const { currentlyReading } = Astro.props;
+const coverImageUrl = currentlyReading?.coverImage ? urlFor(currentlyReading.coverImage).url() : 'https://images.theconversation.com/files/620924/original/file-20240923-18-7oph3j.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=1000&fit=clip';
+---
+
+<div class="bento-tile bento-reading" id="bento-reading" style="grid-area: book;">
+  <div class="bento-kicker">CURRENTLY READING</div>
+  <div class="bento-book-covers">
+    <a href={currentlyReading?.url || "#"} target="_blank" rel="noreferrer" class="book-cover" style={`flex: 1; min-height: 300px; background: url('${coverImageUrl}') center/cover no-repeat; position: relative; display: block;`} data-hover>
+      {currentlyReading?.title && (
+        <span style="position: absolute; bottom: 12px; left: 12px; background: rgba(0,0,0,0.7); padding: 4px 8px; color: white; font-size: 0.8rem; font-family: var(--font-mono);">
+          {currentlyReading.title}
+        </span>
+      )}
+    </a>
+  </div>
+</div>

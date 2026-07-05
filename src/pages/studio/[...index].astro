@@ -1,0 +1,21 @@
+---
+export const prerender = false;
+// src/pages/studio/[...index].astro
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inside-a-Head Studio</title>
+  </head>
+  <body style="margin: 0; padding: 0;">
+    <div id="sanity"></div>
+    <script>
+      import { renderStudio } from 'sanity';
+      import config from '../../../sanity.config';
+      renderStudio(document.getElementById('sanity')!, config);
+    </script>
+  </body>
+</html>

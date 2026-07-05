@@ -1,0 +1,364 @@
+---
+import MagazineLayout from '../layouts/MagazineLayout.astro';
+---
+
+<MagazineLayout title="Resume | Svazer">
+  <style>
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 120px 1.5rem 8rem 1.5rem;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .hero-section h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+    }
+
+    .hero-section h2 {
+      font-size: 1.25rem;
+      color: var(--accents-5);
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+
+    .hero-section p {
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+      color: var(--accents-6);
+      line-height: 1.6;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: var(--foreground);
+      text-decoration: none;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .contact-links a:hover {
+      color: var(--accents-5);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.875rem;
+      color: var(--accents-5);
+    }
+
+    .social-links a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--foreground);
+    }
+
+    .resume-section {
+      margin-bottom: 5rem;
+    }
+
+    .resume-section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--accents-2);
+      padding-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .resume-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .resume-item {
+        grid-template-columns: 200px 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .resume-date {
+      color: var(--accents-5);
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.9rem;
+      padding-top: 0.25rem;
+    }
+
+    .resume-content h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem 0;
+      color: var(--foreground);
+    }
+
+    .resume-content .meta {
+      color: var(--foreground);
+      font-weight: 500;
+      margin: 0 0 1.25rem 0;
+      font-size: 1rem;
+    }
+
+    .resume-content .meta span {
+      color: var(--accents-5);
+      font-weight: 400;
+    }
+
+    .resume-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: var(--accents-6);
+      line-height: 1.6;
+    }
+
+    .resume-content li {
+      margin-bottom: 0.75rem;
+      display: flex;
+    }
+
+    .resume-content li::before {
+      content: "—";
+      color: var(--accents-4);
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-family: 'Geist Mono', monospace;
+      padding: 0.25rem 0.5rem;
+      background: var(--accents-1);
+      border: 1px solid var(--accents-2);
+      border-radius: 4px;
+      color: var(--foreground);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .skill-category h4 {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accents-5);
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-category p, .skill-category ul {
+      line-height: 1.6;
+      color: var(--foreground);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skill-category ul li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid var(--accents-1);
+      padding-bottom: 0.25rem;
+    }
+
+    .skill-category ul li span.cert-org {
+      color: var(--accents-5);
+    }
+  </style>
+
+  <main>
+    <div class="resume-container">
+
+      <!-- Hero Header -->
+      <section class="hero-section">
+        <h1>Svazer</h1>
+        <h2>WhatsApp Bot Developer</h2>
+        <p>
+          WhatsApp Bot Developer with deep expertise in Node.js automation and AI integration. Creator of Takina MD — a comprehensive WhatsApp Multi-Device bot with 500+ plugins covering AI chat, media downloading, RPG games, group management, and more. Passionate about building elegant plugin architectures and scalable bot ecosystems.
+        </p>
+
+        <div class="contact-links">
+          <a href="https://wa.me/62895615063060">
+            <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i> WhatsApp Me
+          </a>
+          <a href="https://github.com/svazerID" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="github" style="width: 18px; height: 18px;"></i> GitHub
+          </a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.instagram.com/rdnmshtguy" target="_blank" rel="noreferrer">Instagram</a>
+          <span>&bull;</span>
+          <span>Indonesia</span>
+          <span>&bull;</span>
+          <span>@svazerID</span>
+        </div>
+      </section>
+
+      <!-- Professional Journey -->
+      <section class="resume-section">
+        <h3 class="resume-section-title">Professional Journey</h3>
+
+        <div class="resume-item">
+          <div class="resume-date">2024 – Present</div>
+          <div class="resume-content">
+            <h4>Creator & Lead Developer</h4>
+            <p class="meta">Takina MD (WhatsApp Bot) <span>&bull; Indonesia &bull; Full-time</span></p>
+            <ul>
+              <li>Built and maintained a WhatsApp Multi-Device bot with 500+ plugins using Node.js (ES Modules) and Baileys library.</li>
+              <li>Integrated 43+ AI models including GPT-4, Gemini, Claude, DeepSeek, and Qwen for intelligent chat responses.</li>
+              <li>Designed a modular plugin architecture supporting hot-reload, auto-discovery, and 15+ command categories.</li>
+              <li>Implemented a comprehensive RPG game system with 55 plugins covering dungeon, PvP, trading, and pet systems.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-date">2023 – Present</div>
+          <div class="resume-content">
+            <h4>Freelance Bot Developer</h4>
+            <p class="meta">Various Clients <span>&bull; Indonesia &bull; Freelance</span></p>
+            <ul>
+              <li>Developed and maintained WhatsApp bots for multiple clients, providing bot rental (sewa bot) services.</li>
+              <li>Built custom automation solutions including group management, media downloading, and AI integration.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="resume-section">
+        <h3 class="resume-section-title">Projects</h3>
+
+        <div class="resume-item">
+          <div class="resume-date">2024</div>
+          <div class="resume-content">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
+              <h4 style="margin: 0;">Takina MD</h4>
+              <a href="https://github.com/svazerID" target="_blank" rel="noreferrer" style="font-family: 'Geist Mono', monospace; font-size: 0.85rem; color: var(--accents-5); text-decoration: none; display: flex; align-items: center; gap: 4px;">
+                github.com/svazerID <i data-lucide="external-link" style="width: 12px; height: 12px;"></i>
+              </a>
+            </div>
+            <p class="meta">Creator & Lead Developer</p>
+            <ul>
+              <li>Architected a plugin-based WhatsApp bot ecosystem with 508 plugins across 15+ categories including AI, RPG, downloaders, games, and utilities.</li>
+              <li>Built a Jadibot engine allowing users to clone the bot to their own WhatsApp numbers with independent sessions and shared database.</li>
+              <li>Implemented SQLite persistence with WAL mode, auto-save every 5 seconds, and Worker Thread architecture for crash recovery.</li>
+              <li>Developed AI Rich Formatting system for native WhatsApp rendering of code blocks, tables, and hyperlinks.</li>
+            </ul>
+            <div class="tags">
+              {['Node.js', 'Baileys', 'SQLite', 'FFmpeg', 'ES Modules'].map(tech => (
+                <span class="tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="resume-section">
+        <h3 class="resume-section-title">Education</h3>
+
+        <div class="resume-item">
+          <div class="resume-date">Self-Taught</div>
+          <div class="resume-content">
+            <h4>Software Engineering & Bot Development</h4>
+            <p class="meta">Autodidact &bull; Online Resources & Practice</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professional Skillset -->
+      <section class="resume-section">
+        <h3 class="resume-section-title">Professional Skillset</h3>
+
+        <div class="skills-grid">
+
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="skill-category">
+              <h4>BACKEND</h4>
+              <p>Node.js, ES Modules, Baileys WhatsApp, SQLite, Worker Threads, FFmpeg, REST APIs</p>
+            </div>
+            <div class="skill-category">
+              <h4>AI & INTEGRATION</h4>
+              <p>GPT-4, Gemini, Claude, DeepSeek, Qwen, Image Generation, AI Formatting</p>
+            </div>
+            <div class="skill-category">
+              <h4>LANGUAGES</h4>
+              <p>JavaScript (Expert), SQL (Intermediate), Bash (Intermediate), Indonesian (Native)</p>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+            <div class="skill-category">
+              <h4>Certifications</h4>
+              <ul>
+                <li><strong>WhatsApp Multi-Device API</strong> <span class="cert-org">Baileys</span></li>
+                <li><strong>Node.js Advanced Patterns</strong> <span class="cert-org">Self-Study</span></li>
+                <li><strong>AI Model Integration</strong> <span class="cert-org">Multiple Providers</span></li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h4>Community & Contribution</h4>
+              <div>
+                <p style="font-weight: 600; margin-bottom: 0.25rem;">Open Source</p>
+                <p style="color: var(--accents-5); font-size: 0.9rem; margin-bottom: 0.5rem;">Bot Community Contributor</p>
+                <p style="color: var(--accents-6); font-size: 0.95rem;">Active in WhatsApp bot development community, sharing knowledge and helping developers build their own automation solutions.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+</MagazineLayout>

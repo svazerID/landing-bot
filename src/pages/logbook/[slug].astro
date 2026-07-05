@@ -1,0 +1,66 @@
+---
+export const prerender = false;
+import MagazineLayout from '../../layouts/MagazineLayout.astro';
+import PortableText from '../../components/PortableText.astro';
+import { sanityClient, urlFor } from '../../utils/sanity';
+
+const { slug } = Astro.params;
+let entry = null;
+
+try {
+  entry = await sanityClient.fetch(`*[_type == "logbookEntry" && slug.current == $slug][0]`, { slug });
+} catch (error) {
+  console.error("Failed to fetch logbook entry:", error);
+}
+
+if (!entry) {
+  return Astro.redirect('/404');
+}
+
+// Reading time heuristic
+const words = entry.body
+  ? entry.body
+      .filter((block: any) => block._type === 'block' && block.children)
+      .map((block: any) => block.children.map((child: any) => child.text).join(' '))
+      .join(' ')
+      .split(/\s+/).length
+  : 0;
+const readingTime = Math.ceil(words / 200);
+---
+
+<MagazineLayout title={entry.title}>
+  {entry.heroImage && (
+    <div class="project-hero-wrapper">
+      <img src={urlFor(entry.heroImage).url()} alt={entry.title} class="project-hero-img" />
+    </div>
+  )}
+
+  <article class="article-layout">
+    <header class="article-header">
+      <span class="manifesto-kicker" style="margin-bottom: 12px;">LOGBOOK ENTRY</span>
+      <h1 class="article-title">{entry.title}</h1>
+      <div class="article-meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">PUBLISHED</span>
+          <span class="meta-value">{entry.publishedAt ? new Date(entry.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'N/A'}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">READING TIME</span>
+          <span class="meta-value">{readingTime} MIN READ</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="article-body">
+      {entry.body ? <PortableText portableText={entry.body} /> : <p>No content available.</p>}
+    </section>
+
+    <footer class="magazine-footer-nav" style="justify-content: flex-end;">
+      <a href="/#logbook" class="footer-nav-link" data-hover style="text-align: right;">
+        <span class="nav-label">RETURN TO</span>
+        Logbook
+      </a>
+    </footer>
+  </article>
+</MagazineLayout>
+

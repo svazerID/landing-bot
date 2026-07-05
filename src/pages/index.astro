@@ -1,0 +1,199 @@
+---
+export const prerender = false;
+import HomeLayout from '../layouts/HomeLayout.astro';
+import Footer from '../components/Footer.astro';
+import ProjectPanel from '../components/ProjectPanel.astro';
+import ReadingTile from '../components/ReadingTile.astro';
+import { sanityClient } from '../utils/sanity';
+
+let logbookEntries = [];
+let projects = [];
+let siteSettings = null;
+
+try {
+  [logbookEntries, projects, siteSettings] = await Promise.all([
+    sanityClient.fetch(`*[_type == "logbookEntry"] | order(publishedAt desc) [0..2]`),
+    sanityClient.fetch(`*[_type == "project"] | order(order asc)`),
+    sanityClient.fetch(`*[_type == "siteSettings"][0]`)
+  ]);
+} catch (error) {
+  console.error("Failed to fetch data from Sanity:", error);
+}
+
+// Override with static data for bot portfolio
+projects = [
+  {
+    title: "Takina MD",
+    description: "A comprehensive WhatsApp Multi-Device bot with 508+ plugins covering AI chat, media downloading, RPG games, and group management. Powered by Baileys & Node.js.",
+    slug: { current: "takina-md" },
+    projectUrl: "https://github.com/svazerID",
+    themeHex: "#1a0f30",
+    device: "iphone",
+    homepageImage: "https://placehold.co/800x1200/12121C/6C5CE7?text=Takina+MD&font=raleway"
+  },
+  {
+    title: "Sewa Bot System",
+    description: "An automated rental bot system allowing users to rent bot instances. Features include auto-expiration, payment integration, and isolated databases.",
+    slug: { current: "sewa-bot" },
+    projectUrl: "https://github.com/svazerID",
+    themeHex: "#121f1a",
+    device: "browser",
+    homepageImage: "https://placehold.co/1200x800/12121C/2ECC71?text=Sewa+Bot+Dashboard&font=raleway"
+  },
+  {
+    title: "Jadibot Engine",
+    description: "A cloning engine that enables users to connect their own WhatsApp numbers to the bot. Features independent sessions with a shared persistent SQLite database.",
+    slug: { current: "jadibot-engine" },
+    projectUrl: "https://github.com/svazerID",
+    themeHex: "#300a0a",
+    device: "browser",
+    homepageImage: "https://placehold.co/1200x800/12121C/E74C3C?text=Jadibot+Engine&font=raleway"
+  }
+];
+
+const siteTitle = siteSettings?.siteTitle || "Svazer Bot Dev | WhatsApp Bot Developer";
+const siteDescription = siteSettings?.siteDescription || "Studio portofolio Svazer. WhatsApp Bot Developer & Automation Engineer.";
+const bio = siteSettings?.bio || "hi, svazer here. welcome to my portofolio. a personal space for whatsapp bot development, ai integration experiments, and automation engineering. building the most complete whatsapp bot ecosystem — takina md.";
+---
+
+<HomeLayout title={siteTitle} description={siteDescription} projects={projects}>
+  <section class="hero-immersive section-snap" id="top">
+    <div class="hero-parallax-wrapper">
+      <h1 id="hero-title" class="hero-massive-text">SVAZER BOT DEV</h1>
+
+      <div class="hero-center-cluster">
+        <div class="intro-portrait"></div>
+        <div class="intro-logo-overlay">
+          <svg viewBox="0 0 100 100" class="iah-logo">
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="'Geist Mono', monospace" font-size="28" font-weight="bold" fill="currentColor" letter-spacing="-2">STUDIO</text>
+          </svg>
+        </div>
+      </div>
+
+      <p class="hero-copy centered-text" id="profile-bio">
+        {bio}
+      </p>
+    </div>
+
+    <div class="scroll-indicator-wrapper">
+      <span class="scroll-indicator-text">SCROLL FOR MORE</span>
+      <div class="scroll-indicator">
+        <div class="scroll-indicator-line"></div>
+      </div>
+    </div>
+  </section>
+
+  {projects.map((project: any, index: number) => (
+    <ProjectPanel project={project} index={index} />
+  ))}
+
+  <!-- The Design System (The Engine Room) -->
+  <section class="engine-room-section section-snap" id="design-system">
+    <div class="engine-room-content">
+      <div>
+        <h2 class="engine-title">SYSTEM ARCHITECTURE</h2>
+        <p class="engine-copy">Powered by Baileys & Node.js. Explore the plugin-based architecture, AI integration, and modular design system that powers Takina MD bot.</p>
+      </div>
+      <a href="https://github.com/svazerID" class="button button-massive ds-cta" target="_blank" rel="noreferrer" data-hover>
+        Explore <i data-lucide="arrow-right" style="margin-left: 16px; width: 24px; height: 24px;"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- The Logbook -->
+  <section class="logbook-cinematic section-snap" id="logbook">
+    <div class="logbook-header-wrapper">
+      <h2 class="logbook-huge-title">LOGBOOK</h2>
+    </div>
+    <div id="logbook-list" class="logbook-list">
+      {logbookEntries.map((entry: any) => {
+        const date = new Date(entry.publishedAt);
+        const dateStr = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+        return (
+          <a href={`/logbook/${entry.slug.current}`} class="logbook-entry" data-hover>
+            <div class="logbook-date">{dateStr}</div>
+            <div class="logbook-content">
+              <h3 class="logbook-title-parallax">{entry.title}</h3>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+<div class="logbook-footer" style="margin-top: 4vw; text-align: right;">
+      <a href="/logbook" class="button button-massive" data-hover style="padding: 16px 32px; font-size: 1rem;">View Full Logbook →</a>
+    </div>
+  </section>
+
+  <!-- The Shelf Part 1: Build Metrics & Status -->
+  <section class="bento-section section-snap" id="shelf-builds">
+    <div class="bento-wrapper">
+      <div class="logbook-header-wrapper">
+        <h2 class="logbook-huge-title bento-title-parallax">MUSEUM OF MY MESS</h2>
+      </div>
+      <div class="bento-grid bento-grid-builds">
+        <!-- Tile: Clock -->
+        <div class="bento-tile bento-clock">
+          <div class="bento-kicker">LOCAL TIME</div>
+          <div class="geist-wrapper">
+            <span id="geist-time" class="geist-time">00:00</span>
+            <span id="geist-seconds" class="geist-seconds">00</span>
+          </div>
+          <div class="clock-location">INDONESIA, ID</div>
+        </div>
+
+        <!-- Tile: Reading Tile (SSR from Sanity) -->
+        <ReadingTile currentlyReading={siteSettings?.currentlyReading} />
+
+        <!-- Tile: GitHub (Named Area: gh) -->
+        <div class="bento-tile bento-github">
+          <div class="github-header">
+            <div class="bento-kicker">BUILD METRICS</div>
+            <div class="gh-counter" id="gh-total-count">... contributions</div>
+          </div>
+          <div class="github-container">
+            <div class="gh-labels-y"><span>Mon</span><span>Wed</span><span>Fri</span></div>
+            <div class="github-matrix"></div>
+          </div>
+          <div class="github-footer">
+            <div class="github-meta"><span>github.com/svazerID</span><i data-lucide="github" style="width: 14px;"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Shelf Part 2: Gear & Media -->
+  <section class="bento-section section-snap" id="shelf-media">
+    <div class="bento-wrapper">
+      <div class="logbook-header-wrapper">
+        <div class="bento-kicker" style="color: var(--accents-5); letter-spacing: 0.3em; margin-bottom: 16px;">THE GEAR // THE MESS</div>
+        <h2 class="logbook-huge-title bento-title-parallax" style="font-size: clamp(2rem, 5vw, 4rem); color: var(--accents-4);">COLLECTED FRAGMENTS</h2>
+      </div>
+      <div class="bento-grid bento-grid-media">
+        <!-- Tile: Spotify (Named Area: audio) -->
+        <div class="bento-tile bento-audio" style="padding: 0;">
+          <iframe src="https://open.spotify.com/embed/track/5lNmaZfu3SQMuzl1hH2wzA?utm_source=generator" style="border-radius:16px; border: none; width: 100%; height: 100%;" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Tile: Gear (Named Area: shoe) -->
+        <div class="bento-tile bento-shoe">
+          <div class="bento-kicker">CURRENT GEAR</div>
+          <!-- We use absolute public URLs for static assets that we ported -->
+          <img src="https://placehold.co/400x400/12121C/6C5CE7?text=Node.js+v22&font=raleway" class="shoe-img" alt="Node.js v22" />
+          <div class="shoe-name">NODE.JS V22</div>
+        </div>
+
+        <!-- Tile: Athletics (Named Area: athletics) -->
+        <div class="bento-tile bento-athletics">
+          <div class="bento-kicker">BOT STATS</div>
+          <div class="athletics-data">
+            <div class="ath-row"><span class="ath-label">TOTAL PLUGINS</span><span class="ath-value">508+</span></div>
+            <div class="ath-row"><span class="ath-label">AI MODELS</span><span class="ath-value">43</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer className="section-snap" variant="massive" />
+</HomeLayout>

@@ -1,0 +1,16 @@
+---
+import { PortableText as PortableTextInternal } from 'astro-portabletext';
+import Gallery from './Gallery.astro';
+import CodeSnippet from './CodeSnippet.astro';
+
+const components = {
+  type: {
+    gallery: Gallery,
+    codeSnippet: CodeSnippet,
+  },
+};
+
+const { portableText } = Astro.props;
+---
+
+<PortableTextInternal value={portableText} components={components} />

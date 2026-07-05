@@ -1,0 +1,123 @@
+---
+export const prerender = false;
+import MagazineLayout from '../../layouts/MagazineLayout.astro';
+import PortableText from '../../components/PortableText.astro';
+import { sanityClient, urlFor } from '../../utils/sanity';
+
+const { slug } = Astro.params;
+let project = null;
+let allProjects = [];
+
+try {
+  [project, allProjects] = await Promise.all([
+    sanityClient.fetch(`*[_type == "project" && slug.current == $slug][0]`, { slug }),
+    sanityClient.fetch(`*[_type == "project"] | order(order asc)`)
+  ]);
+} catch (error) {
+  console.error("Failed to fetch project data:", error);
+}
+
+// Override with static data for bot portfolio
+allProjects = [
+  {
+    title: "Takina MD",
+    description: "A comprehensive WhatsApp Multi-Device bot with 508+ plugins covering AI chat, media downloading, RPG games, and group management. Powered by Baileys & Node.js.",
+    slug: { current: "takina-md" },
+    projectUrl: "https://github.com/svazerID",
+    themeHex: "#1a0f30",
+    device: "iphone",
+    homepageImage: "https://placehold.co/800x1200/12121C/6C5CE7?text=Takina+MD&font=raleway"
+  },
+  {
+    title: "Sewa Bot System",
+    description: "An automated rental bot system allowing users to rent bot instances. Features include auto-expiration, payment integration, and isolated databases.",
+    slug: { current: "sewa-bot" },
+    projectUrl: "https://github.com/svazerID",
+    themeHex: "#121f1a",
+    device: "browser",
+    homepageImage: "https://placehold.co/1200x800/12121C/2ECC71?text=Sewa+Bot+Dashboard&font=raleway"
+  },
+  {
+    title: "Jadibot Engine",
+    description: "A cloning engine that enables users to connect their own WhatsApp numbers to the bot. Features independent sessions with a shared persistent SQLite database.",
+    slug: { current: "jadibot-engine" },
+    projectUrl: "https://github.com/svazerID",
+    themeHex: "#300a0a",
+    device: "browser",
+    homepageImage: "https://placehold.co/1200x800/12121C/E74C3C?text=Jadibot+Engine&font=raleway"
+  }
+];
+
+project = allProjects.find((p: any) => p.slug.current === slug) || null;
+if (project) {
+  project.role = "Lead Developer";
+  project.year = "2024";
+  project.stack = "Node.js, Baileys, SQLite";
+  project.status = "Active";
+  project.pageHeroImage = project.homepageImage;
+  project.body = null;
+}
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+
+const currentIndex = allProjects.findIndex((p: any) => p.slug.current === slug);
+const nextProject = allProjects.length > 0 ? allProjects[(currentIndex + 1) % allProjects.length] : null;
+
+const colors = ['#1a0f30', '#121f1a', '#300a0a'];
+const projectColors: Record<string, string> = {
+  'the-retro-circuit': '#1a0f30',
+  'setlists-md': '#121f1a',
+  'setlist-md': '#121f1a', // Fallback for either slug spelling
+  'redline-running': '#300a0a'
+};
+
+const projectBgColor = project.themeHex || projectColors[project.slug.current] || colors[currentIndex % colors.length];
+---
+
+<MagazineLayout title={project.title} description={project.description} backgroundColor={projectBgColor}>
+  {project.pageHeroImage && (
+    <div class="project-hero-wrapper">
+      <img src={typeof project.pageHeroImage === 'string' ? project.pageHeroImage : urlFor(project.pageHeroImage).url()} alt={project.title} class="project-hero-img" />
+    </div>
+  )}
+
+  <article class="article-layout">
+    <header class="article-header">
+      <h1 class="article-title">{project.title}</h1>
+      <div class="article-meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">ROLE</span>
+          <span class="meta-value">{project.role || 'N/A'}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">YEAR</span>
+          <span class="meta-value">{project.year || 'N/A'}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">STACK</span>
+          <span class="meta-value">{project.stack || 'N/A'}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">STATUS</span>
+          <span class="meta-value">{project.status || 'N/A'}</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="article-body">
+      {project.body ? <PortableText portableText={project.body} /> : <p>No content available.</p>}
+    </section>
+
+    {nextProject && (
+      <footer class="magazine-footer-nav">
+        <a href={`/projects/${nextProject.slug.current}`} class="footer-nav-link" data-hover style="text-align: right; width: 100%;">
+          <span class="nav-label">NEXT PROJECT</span>
+          {nextProject.title}
+        </a>
+      </footer>
+    )}
+    <a href="/#top" class="footer-back-studio" data-hover>&larr; Back to Studio Index</a>
+  </article>
+</MagazineLayout>

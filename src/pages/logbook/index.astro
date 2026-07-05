@@ -1,0 +1,74 @@
+---
+export const prerender = false;
+import MagazineLayout from "../../layouts/MagazineLayout.astro";
+import { sanityClient } from "../../utils/sanity";
+
+let logbookEntries = [];
+
+try {
+  logbookEntries = await sanityClient.fetch(
+    `*[_type == "logbookEntry"] | order(publishedAt desc)`,
+  );
+} catch (error) {
+  console.error("Failed to fetch logbook entries:", error);
+}
+---
+
+<MagazineLayout title="Logbook">
+  <main class="article-layout">
+    <!-- Explicit spacer to clear the fixed Magazine header completely -->
+    <div style="height: 180px; width: 100%;"></div>
+
+    <header class="article-header" style="margin-bottom: 5rem;">
+      <h1 class="article-title">STUDIO LOG</h1>
+      <p
+        style="color: var(--accents-5); font-family: var(--font-mono); font-size: 0.9rem; margin-top: 1rem;"
+      >
+        CHRONOLOGICAL FRAGMENTS & DOCUMENTATION
+      </p>
+    </header>
+
+    <div
+      class="logbook-list"
+      style="border-top: 1px solid var(--geist-border);"
+    >
+      {
+        logbookEntries.map((entry: any) => {
+          const date = new Date(entry.publishedAt);
+          const dateStr = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+          return (
+            <a
+              href={`/logbook/${entry.slug.current}`}
+              class="logbook-entry"
+              data-hover
+            >
+              <div class="logbook-date">{dateStr}</div>
+              <div class="logbook-content">
+                <h3 class="logbook-title-parallax">{entry.title}</h3>
+              </div>
+            </a>
+          );
+        })
+      }
+
+      {
+        logbookEntries.length === 0 && (
+          <p style="text-align: center; color: var(--accents-4); padding: 4rem 0;">
+            The log is currently empty.
+          </p>
+        )
+      }
+    </div>
+
+    <!-- Centered inline-block link prevents the cursor bounding box from stretching full width -->
+    <div style="text-align: center; margin-top: 4rem;">
+      <a
+        href="/#top"
+        class="footer-back-studio"
+        data-hover
+        style="display: inline-block; margin-top: 0; margin-bottom: 0;"
+        >&larr; Back to Studio</a
+      >
+    </div>
+  </main>
+</MagazineLayout>

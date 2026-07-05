@@ -1,0 +1,36 @@
+---
+const { node } = Astro.props;
+---
+
+<div class="code-snippet-block">
+  {node.language && <div class="lang-label">{node.language}</div>}
+  <pre><code>{node.code}</code></pre>
+</div>
+
+<style>
+  .code-snippet-block {
+    background: var(--accents-1);
+    border: 1px solid var(--accents-2);
+    border-radius: 8px;
+    margin: 2rem 0;
+    overflow: hidden;
+  }
+  .lang-label {
+    background: var(--accents-2);
+    color: var(--accents-5);
+    padding: 0.25rem 1rem;
+    font-size: 0.8rem;
+    font-family: monospace;
+    border-bottom: 1px solid var(--border-color);
+  }
+  pre {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--geist-foreground);
+  }
+</style>

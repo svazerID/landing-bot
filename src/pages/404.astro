@@ -1,0 +1,17 @@
+---
+// src/pages/404.astro
+import MagazineLayout from '../layouts/MagazineLayout.astro';
+---
+
+<MagazineLayout title="404: Page Not Found">
+  <main class="article-layout" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+    <span class="manifesto-kicker" style="margin-bottom: 24px; color: var(--accents-5);">ERROR 404</span>
+    <h1 class="article-title" style="font-size: clamp(4rem, 15vw, 12rem); line-height: 0.8; margin-bottom: 48px;">LOST IN THE MESS.</h1>
+    <p style="font-size: clamp(1.2rem, 2vw, 1.8rem); color: var(--accents-7); max-width: 600px; line-height: 1.5; margin-bottom: 64px;">
+      The page you are looking for has been moved, deleted, or never existed in this studio.
+    </p>
+    <a href="/" class="button button-massive" data-hover style="padding: 24px 48px; font-size: 1.2rem; border: 1px solid var(--geist-border);">
+      RETURN TO STUDIO INDEX
+    </a>
+  </main>
+</MagazineLayout>
