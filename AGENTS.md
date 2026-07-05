@@ -4,7 +4,7 @@ This file provides essential information for AI coding agents working on the Ins
 
 ## Project Overview
 
-Inside is a personal digital portfolio and ecosystem showcase for Svazer Corp. It showcases various projects, logbook entries, and system architecture details. The site is built with Astro and React, pulling dynamic content from Sanity.io as a headless CMS.
+Inside is a personal digital portfolio and ecosystem showcase for Svazer The Great. It showcases various projects, logbook entries, and system architecture details. The site is built with Astro and React, pulling dynamic content from Sanity.io as a headless CMS.
 
 ## Technology Stack
 
@@ -112,7 +112,7 @@ Ensure Sanity.io project ID and dataset are set in environment variables:
 
 ## Known Information
 
-- The site showcases various software projects built by Svazer Corp.
+- The site showcases various software projects built by Svazer The Great.
 - Features a logbook section for updates/logs
 - Includes a "museum" section with tech stats and gear
 - Uses retro/cyberpunk aesthetic with neon colors and animated elements

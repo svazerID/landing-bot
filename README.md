@@ -47,7 +47,7 @@ Open <http://localhost:4321> to see the site in action.
 ## 📂 Project Structure
 
 ```
-Svazer Corp./
+Svazer The Great/
 ├── .git/
 ├── .vscode/
 ├── docs/
