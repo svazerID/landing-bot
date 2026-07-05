@@ -450,7 +450,7 @@ h1, h2, h3 {
   font-size: var(--fs-h2);
   margin-bottom: 10vw;
   text-transform: uppercase;
-  color: var(--accents-3);
+  color: var(--geist-foreground);
 }
 
 .logbook-list {
