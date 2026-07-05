@@ -45,6 +45,24 @@ allProjects = [
     themeHex: "#300a0a",
     device: "browser",
     homepageImage: "https://cdn.svazer.eu.cc/file/80452622.jpeg"
+  },
+  {
+    title: "Alsya API",
+    description: "Layanan REST API komprehensif yang menyediakan berbagai endpoint handal untuk bot dan web. Dirancang untuk performa tinggi dan uptime maksimal.",
+    slug: { current: "alsya-api" },
+    projectUrl: "https://api.alfisy.my.id",
+    themeHex: "#0f1a30",
+    device: "browser",
+    homepageImage: "https://cdn.svazer.eu.cc/file/9fda3fbb.jpeg"
+  },
+  {
+    title: "Svazer CDN",
+    description: "Content Delivery Network (CDN) yang cepat dan andal untuk upload file dan hosting media. Solusi ideal untuk penyimpanan file yang aman dan mudah diakses.",
+    slug: { current: "svazer-cdn" },
+    projectUrl: "https://cdn.svazer.eu.cc",
+    themeHex: "#2a0a30",
+    device: "browser",
+    homepageImage: "https://cdn.svazer.eu.cc/file/39699610.jpeg"
   }
 ];
 
@@ -62,6 +80,10 @@ if (project) {
     project.bodyRaw = "<p>Sewa Bot System adalah platform otomasi penyewaan bot WhatsApp yang memungkinkan pengguna untuk menyewa <em>instance</em> bot secara mandiri.</p><br/><p>Sistem ini dirancang dengan fitur <em>auto-expiration</em>, integrasi <em>payment gateway</em>, dan manajemen database terisolasi untuk masing-masing penyewa. Ini memastikan keamanan data privasi dan memberikan pengalaman operasional yang lepas tangan (hands-free) bagi admin.</p>";
   } else if (project.slug.current === 'jadibot-engine') {
     project.bodyRaw = "<p>Jadibot Engine adalah sistem kloning inovatif yang memungkinkan pengguna menghubungkan nomor WhatsApp mereka sendiri ke dalam bot (menjadikan nomor mereka bot sementara).</p><br/><p>Setiap sesi kloning berjalan secara independen namun tetap dapat berbagi sumber daya dari database SQLite pusat. Fitur ini sangat berguna untuk pengguna yang ingin merasakan memiliki bot sendiri tanpa harus mengatur server, hosting, maupun dependensi teknis lainnya.</p>";
+  } else if (project.slug.current === 'alsya-api') {
+    project.bodyRaw = "<p>Alsya API adalah layanan REST API komprehensif yang dirancang untuk mendukung ekosistem bot WhatsApp dan aplikasi web. Dengan infrastruktur yang kuat, API ini menyediakan berbagai endpoint penting mulai dari utilitas data hingga pemrosesan media.</p><br/><p>Fokus utama layanan ini adalah memberikan respons berkecepatan tinggi (low latency) dengan jaminan uptime yang stabil, memudahkan developer lain untuk membangun fitur tanpa harus mengelola backend kompleks sendiri.</p>";
+  } else if (project.slug.current === 'svazer-cdn') {
+    project.bodyRaw = "<p>Svazer CDN adalah sistem Content Delivery Network dan platform manajemen file yang dirancang untuk kecepatan dan efisiensi. Sangat cocok digunakan untuk meng-hosting gambar, dokumen, dan media lainnya yang di-generate oleh bot.</p><br/><p>Sistem ini memberikan pengalaman upload yang mulus dengan antarmuka yang ramah pengguna, serta menjamin aset media Anda dapat diakses dengan cepat dari mana saja tanpa membebani server utama bot.</p>";
   }
 }
 
