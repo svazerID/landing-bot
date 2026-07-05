@@ -3,7 +3,7 @@
 **Svazer Corp.** is a personal digital portfolio and ecosystem showcase for **Svazer Corp.**  
 It showcases projects, logbook entries, system architecture, and more—built with **Astro + React** and powered by **Sanity.io** as a headless CMS.
 
-![Svazer Corp. Preview](./public/retro-circuit.png) <!-- optional placeholder -->
+![Svazer Corp. Preview](https://cdn.svazer.eu.cc/file/adef03f6.jpeg) <!-- optional placeholder -->
 
 ---
 
