@@ -227,7 +227,7 @@ h1, h2, h3 {
 }
 
 .hero-copy.centered-text {
-  bottom: 15vh;
+  bottom: 20vh;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -238,7 +238,7 @@ h1, h2, h3 {
 
 .scroll-indicator-wrapper {
   position: absolute;
-  bottom: 0;
+  bottom: -40px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
