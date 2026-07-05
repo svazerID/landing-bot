@@ -1,34 +1,132 @@
-# Svazer Corp. 🚀
-**Digital Portfolio & Ecosystem Playground**
+# 🖥️ Svazer Corp.
 
-Welcome to the official repository of **Svazer Corp.** This is our digital playground where we showcase our products, AI integrations, web applications, and automation ecosystems.
+**Svazer Corp.** is a personal digital portfolio and ecosystem showcase for **Svazer Corp.**  
+It showcases projects, logbook entries, system architecture, and more—built with **Astro + React** and powered by **Sanity.io** as a headless CMS.
 
-## 🚀 Projects Ecosystem
-This portfolio highlights the various advanced systems built by Svazer Corp:
-
-- **Takina MD**: An advanced WhatsApp Multi-Device bot with 508+ plugins, 43+ AI integrations, and an RPG system.
-- **Sewa Bot System**: An automated WhatsApp bot rental platform (hands-free) with integrated payment gateways.
-- **Jadibot Engine**: An innovative cloning system that connects WhatsApp numbers into standalone bots.
-- **Alsya API**: A comprehensive, low-latency REST API service built to support bots and web apps.
-- **Svazer CDN**: A blazing-fast Content Delivery Network tailored for hosting bot media assets securely.
-- **Alfixd AI**: An advanced multimodal chatbot assistant (Text, Image, Voice) powered by 10+ top-tier AI models.
-- **Axd Downloader**: An all-in-one downloading platform for saving media from various social networks without limits.
-- **Axd Player**: A smart web music player to stream and download high-quality MP3s directly from YouTube.
-- **Alfixd Image Tools**: An AI-powered visual editing studio featuring Upscaling, BG Removal, and text-to-image generation.
-
-## 🛠️ Tech Stack
-This portfolio is built with high performance and modern aesthetics in mind:
-- **Framework**: [Astro](https://astro.build/) - For ultra-fast static loading speeds.
-- **Styling**: Vanilla CSS with brutalist dark mode themes, bold typography, and smooth micro-animations.
-- **Backend (Bot & API)**: Node.js, Baileys, SQLite (WAL mode).
-- **Deployment**: Vercel (CI/CD directly from GitHub).
-
-## 📓 Logbook & Collected Fragments
-This portfolio isn't just a showcase—it's a record of our journey. All experiments, development documentation, code snippets, and messy ideas are documented honestly in the **Logbook**. We believe that *"building in public"* is the ultimate way to grow.
+![Svazer Corp. Preview](./public/retro-circuit.png) <!-- optional placeholder -->
 
 ---
 
-## 🤝 Let's Connect
-Interested in the automation ecosystem, web apps, or smart AI integration? Let's discuss and build brilliant ideas together.
+## 🚀 Quick Start
 
-[GitHub Svazer](https://github.com/svazerID)
+```bash
+# 1️⃣ Clone the repo
+git clone https://github.com/svazerID/landing-bot.git
+cd landing-bot
+
+# 2️⃣ Install dependencies
+npm install
+
+# 3️⃣ Set up environment variables (see .env.example)
+cp .env.example .env
+# Fill in SANITY_PROJECT_ID, SANITY_DATASET, SANITY_API_TOKEN
+
+# 4️⃣ Start the dev server
+npm run dev
+```
+
+Open <http://localhost:4321> to see the site in action.
+
+---
+
+## 🛠️ Technology Stack
+
+| Category      | Tech / Library                                   |
+|---------------|--------------------------------------------------|
+| **Framework** | [Astro 4.x](https://astro.build) (with React)   |
+| **UI Library**| [React](https://reactjs.org) (`@astrojs/react`) |
+| **Styling**   | CSS Modules + Custom CSS (`src/styles/`)        |
+| **CMS**       | [Sanity.io](https://www.sanity.io) (`@sanity/astro`) |
+| **TypeScript**| For type‑safe code (`tsconfig.json`)            |
+| **Icons**     | [Lucide React](https://lucide.dev)              |
+| **Deployment**| Optimized for Vercel (`@astrojs/vercel`)        |
+| **Node**      | `>=22.12.0`                                     |
+
+---
+
+## 📂 Project Structure
+
+```
+Svazer Corp./
+├── .git/
+├── .vscode/
+├── docs/
+│   ├── audit.md
+│   ├── brand_interview.md
+│   ├── moodboard.md
+│   └── wireframe.md
+├── public/
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── project.js
+│   ├── redline-running.png
+│   ├── retro-circuit.png
+│   ├── script.js
+│   └── setlists-md.png
+├── src/
+│   ├── components/     # Reusable React components (ProjectPanel, ReadingTile, …)
+│   ├── layouts/        # Layout components (HomeLayout.astro)
+│   ├── pages/          # Astro pages (index.astro, logbook/[slug].astro, …)
+│   ├── schema/         # Sanity schema types (project.ts, logbookEntry.ts, …)
+│   ├── styles/         # CSS modules & global styles
+│   └── utils/          # Utility files (sanity client setup)
+├── .gitignore
+├── AGENTS.md
+├── astro.config.mjs
+├── check_projects.cjs
+├── package-lock.json
+├── package.json
+├── sanity.cli.ts
+├── sanity.config.ts
+└── tsconfig.json
+```
+
+**Key files**
+- `astro.config.mjs` – Astro configuration
+- `sanity.config.ts` – Sanity studio configuration
+- `package.json` – Dependencies & npm scripts
+- `tsconfig.json` – TypeScript configuration
+- `src/pages/index.astro` – Homepage (fetches data from Sanity)
+- `src/components/ProjectPanel.astro` – Project showcase component
+- `src/components/ReadingTile.astro` – “Currently reading” widget
+
+---
+
+## 🛠️ Development Commands
+
+| Command                | Description                              |
+|------------------------|------------------------------------------|
+| `npm install`          | Install dependencies                     |
+| `npm run dev`          | Start dev server (`localhost:4321`)      |
+| `npm run build`        | Build production bundle (`dist/`)        |
+| `npm run preview`      | Preview production build locally         |
+| `npx astro ...`        | Run any Astro CLI command                |
+
+> **Note:** No test script is defined; testing is done manually or via external CI.
+
+---
+
+## 🚀 Deployment (Vercel)
+
+1. Push the repository to GitHub / GitLab / Bitbucket.  
+2. Import the project in Vercel.  
+3. Vercel auto‑detects the Astro build and deploys it.  
+
+**Environment variables required in Vercel:**
+
+| Variable               | Description                              |
+|------------------------|------------------------------------------|
+| `SANITY_PROJECT_ID`    | Your Sanity project ID                   |
+| `SANITY_DATASET`       | Dataset name (usually `production`)      |
+| `SANITY_API_TOKEN`     | Token with read (and optionally write) access |
+
+---
+
+## 📄 License
+
+This project is private and proprietary to **Svazer Corp.**  
+All rights reserved. Unauthorized copying, modification, or distribution is prohibited.
+
+---
+
+*Made with ❤️ by the Svazer Corp. team.*
