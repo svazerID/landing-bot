@@ -55,7 +55,14 @@ if (project) {
   project.stack = "Node.js, Baileys, SQLite";
   project.status = "Active";
   project.pageHeroImage = project.homepageImage;
-  project.body = null;
+  
+  if (project.slug.current === 'takina-md') {
+    project.bodyRaw = "<p>Takina MD adalah sebuah bot WhatsApp canggih berbasis Multi-Device yang dirancang untuk skalabilitas dan performa tinggi. Dibangun menggunakan framework <strong>Baileys</strong> dan <strong>Node.js</strong>, bot ini memiliki arsitektur modular yang mendukung lebih dari 500+ plugin interaktif.</p><br/><p>Fitur utama meliputi integrasi dengan 43+ model AI, sistem RPG game yang imersif, manajemen grup otomatis, dan berbagai alat utilitas lainnya. Data disimpan menggunakan SQLite dengan mode WAL untuk menjamin stabilitas dan kecepatan tinggi bahkan saat trafik padat.</p>";
+  } else if (project.slug.current === 'sewa-bot') {
+    project.bodyRaw = "<p>Sewa Bot System adalah platform otomasi penyewaan bot WhatsApp yang memungkinkan pengguna untuk menyewa <em>instance</em> bot secara mandiri.</p><br/><p>Sistem ini dirancang dengan fitur <em>auto-expiration</em>, integrasi <em>payment gateway</em>, dan manajemen database terisolasi untuk masing-masing penyewa. Ini memastikan keamanan data privasi dan memberikan pengalaman operasional yang lepas tangan (hands-free) bagi admin.</p>";
+  } else if (project.slug.current === 'jadibot-engine') {
+    project.bodyRaw = "<p>Jadibot Engine adalah sistem kloning inovatif yang memungkinkan pengguna menghubungkan nomor WhatsApp mereka sendiri ke dalam bot (menjadikan nomor mereka bot sementara).</p><br/><p>Setiap sesi kloning berjalan secara independen namun tetap dapat berbagi sumber daya dari database SQLite pusat. Fitur ini sangat berguna untuk pengguna yang ingin merasakan memiliki bot sendiri tanpa harus mengatur server, hosting, maupun dependensi teknis lainnya.</p>";
+  }
 }
 
 if (!project) {
@@ -107,7 +114,7 @@ const projectBgColor = project.themeHex || projectColors[project.slug.current] |
     </header>
 
     <section class="article-body">
-      {project.body ? <PortableText portableText={project.body} /> : <p>No content available.</p>}
+      {project.bodyRaw ? <div class="project-custom-body" set:html={project.bodyRaw} style="font-size: 1.1rem; line-height: 1.6; color: var(--accents-2);" /> : (project.body ? <PortableText portableText={project.body} /> : <p>No content available.</p>)}
     </section>
 
     {nextProject && (
