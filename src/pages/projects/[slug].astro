@@ -63,6 +63,42 @@ allProjects = [
     themeHex: "#2a0a30",
     device: "browser",
     homepageImage: "https://cdn.svazer.eu.cc/file/39699610.jpeg"
+  },
+  {
+    title: "Afixd AI",
+    description: "Asisten chatbot multimodal tingkat lanjut yang mengintegrasikan 10+ model AI tercanggih dengan dukungan teks, gambar, dan suara.",
+    slug: { current: "afixd-ai" },
+    projectUrl: "https://ai.alfisy.my.id",
+    themeHex: "#0a1828",
+    device: "browser",
+    homepageImage: "https://cdn.svazer.eu.cc/file/40a6e5ed.jpeg"
+  },
+  {
+    title: "Axd Downloader",
+    description: "All-in-one downloader terpusat untuk mengunduh video, image, dan audio dari berbagai platform media sosial.",
+    slug: { current: "axd-downloader" },
+    projectUrl: "https://vdl.alfisy.my.id",
+    themeHex: "#2d1b11",
+    device: "browser",
+    homepageImage: "https://cdn.svazer.eu.cc/file/2eb69fe5.jpeg"
+  },
+  {
+    title: "Axd Player",
+    description: "Web pemutar musik modern dengan pengalaman streaming premium. Cari lagu YouTube, putar instan, dan unduh MP3 kualitas tinggi.",
+    slug: { current: "axd-player" },
+    projectUrl: "https://play.alfisy.my.id/",
+    themeHex: "#1c0d22",
+    device: "browser",
+    homepageImage: "https://cdn.svazer.eu.cc/file/53d877b4.jpeg"
+  },
+  {
+    title: "Alfixd Image Tools",
+    description: "Platform editing gambar berbasis AI. Menawarkan fitur Upscale, Background Removal, dan AI Prompt Editing secara instan.",
+    slug: { current: "alfixd-image-tools" },
+    projectUrl: "https://img-tool.alfisy.my.id",
+    themeHex: "#0e221c",
+    device: "browser",
+    homepageImage: "https://cdn.svazer.eu.cc/file/1cb492aa.jpeg"
   }
 ];
 
@@ -84,6 +120,14 @@ if (project) {
     project.bodyRaw = "<p>Alsya API adalah layanan REST API komprehensif yang dirancang untuk mendukung ekosistem bot WhatsApp dan aplikasi web. Dengan infrastruktur yang kuat, API ini menyediakan berbagai endpoint penting mulai dari utilitas data hingga pemrosesan media.</p><br/><p>Fokus utama layanan ini adalah memberikan respons berkecepatan tinggi (low latency) dengan jaminan uptime yang stabil, memudahkan developer lain untuk membangun fitur tanpa harus mengelola backend kompleks sendiri.</p>";
   } else if (project.slug.current === 'svazer-cdn') {
     project.bodyRaw = "<p>Svazer CDN adalah sistem Content Delivery Network dan platform manajemen file yang dirancang untuk kecepatan dan efisiensi. Sangat cocok digunakan untuk meng-hosting gambar, dokumen, dan media lainnya yang di-generate oleh bot.</p><br/><p>Sistem ini memberikan pengalaman upload yang mulus dengan antarmuka yang ramah pengguna, serta menjamin aset media Anda dapat diakses dengan cepat dari mana saja tanpa membebani server utama bot.</p>";
+  } else if (project.slug.current === 'afixd-ai') {
+    project.bodyRaw = "<p>Afixd AI adalah asisten chatbot multimodal tingkat lanjut yang dirancang untuk menangani berbagai bentuk instruksi dengan presisi. Platform ini mengintegrasikan lebih dari 10 model AI tercanggih di industri.</p><br/><p>Aplikasi ini memiliki antarmuka yang modern dan responsif, tidak hanya menangani teks tetapi juga pemrosesan gambar, pengenalan suara, hingga analisis dokumen secara cerdas dan efisien.</p>";
+  } else if (project.slug.current === 'axd-downloader') {
+    project.bodyRaw = "<p>Axd Downloader merupakan platform utilitas <em>all-in-one</em> yang mempermudah pengunduhan aset digital dari berbagai jejaring media sosial. Solusi praktis untuk mengarsipkan konten favorit Anda.</p><br/><p>Dengan sistem backend yang kuat, aplikasi ini dapat memproses dan mengunduh video, gambar, maupun audio dalam berbagai resolusi secara cepat dan aman tanpa batasan limit yang mengganggu.</p>";
+  } else if (project.slug.current === 'axd-player') {
+    project.bodyRaw = "<p>AXD Player adalah aplikasi web pemutar musik modern yang memberikan pengalaman streaming audio premium langsung dari peramban (browser) Anda tanpa perlu instalasi aplikasi tambahan.</p><br/><p>Pengguna dapat langsung mencari direktori lagu dari YouTube, memutarnya secara instan dengan antarmuka pemutar yang elegan, dan mengunduhnya ke dalam format MP3 berkualitas tinggi untuk dinikmati secara offline.</p>";
+  } else if (project.slug.current === 'alfixd-image-tools') {
+    project.bodyRaw = "<p>Alfixd Image Tools adalah studio pengeditan gambar komprehensif yang ditenagai oleh Kecerdasan Buatan (AI) untuk mempercepat alur kerja visual Anda secara dramatis.</p><br/><p>Platform ini menawarkan fitur-fitur mutakhir seperti <strong>Upscale Gambar</strong> untuk meningkatkan resolusi tanpa pecah, <strong>Remove Background</strong> secara otomatis dan akurat, serta <strong>Edit dengan Prompt</strong> untuk mengubah gaya gambar hanya dengan menggunakan perintah teks kreatif.</p>";
   }
 }
 
