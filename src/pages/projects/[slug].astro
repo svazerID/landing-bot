@@ -48,7 +48,7 @@ allProjects = [
   },
   {
     title: "Alsya API",
-    description: "Layanan REST API komprehensif yang menyediakan berbagai endpoint handal untuk bot dan web. Dirancang untuk performa tinggi dan uptime maksimal.",
+    description: "A robust REST API service providing reliable endpoints for bots and web applications. Built for high performance and maximum uptime.",
     slug: { current: "alsya-api" },
     projectUrl: "https://api.alfisy.my.id",
     themeHex: "#0f1a30",
@@ -57,7 +57,7 @@ allProjects = [
   },
   {
     title: "Svazer CDN",
-    description: "Content Delivery Network (CDN) yang cepat dan andal untuk upload file dan hosting media. Solusi ideal untuk penyimpanan file yang aman dan mudah diakses.",
+    description: "A lightning-fast Content Delivery Network tailored for media hosting and seamless file uploads. Designed to ensure secure and instant access.",
     slug: { current: "svazer-cdn" },
     projectUrl: "https://cdn.svazer.eu.cc",
     themeHex: "#2a0a30",
@@ -66,7 +66,7 @@ allProjects = [
   },
   {
     title: "Afixd AI",
-    description: "Asisten chatbot multimodal tingkat lanjut yang mengintegrasikan 10+ model AI tercanggih dengan dukungan teks, gambar, dan suara.",
+    description: "An advanced multimodal chatbot assistant integrating 10+ top-tier AI models. Built with a modern interface for text, image, and voice processing.",
     slug: { current: "afixd-ai" },
     projectUrl: "https://ai.alfisy.my.id",
     themeHex: "#0a1828",
@@ -75,7 +75,7 @@ allProjects = [
   },
   {
     title: "Axd Downloader",
-    description: "All-in-one downloader terpusat untuk mengunduh video, image, dan audio dari berbagai platform media sosial.",
+    description: "An all-in-one centralized downloading platform to easily save videos, images, and audio from various social media networks.",
     slug: { current: "axd-downloader" },
     projectUrl: "https://vdl.alfisy.my.id",
     themeHex: "#2d1b11",
@@ -84,7 +84,7 @@ allProjects = [
   },
   {
     title: "Axd Player",
-    description: "Web pemutar musik modern dengan pengalaman streaming premium. Cari lagu YouTube, putar instan, dan unduh MP3 kualitas tinggi.",
+    description: "A sleek, modern web music player offering premium streaming experiences. Search YouTube tracks, play instantly, and download high-quality MP3s.",
     slug: { current: "axd-player" },
     projectUrl: "https://play.alfisy.my.id/",
     themeHex: "#1c0d22",
@@ -93,7 +93,7 @@ allProjects = [
   },
   {
     title: "Alfixd Image Tools",
-    description: "Platform editing gambar berbasis AI. Menawarkan fitur Upscale, Background Removal, dan AI Prompt Editing secara instan.",
+    description: "An AI-powered image editing studio featuring one-click Image Upscaling, Automatic Background Removal, and Creative AI Prompt Editing.",
     slug: { current: "alfixd-image-tools" },
     projectUrl: "https://img-tool.alfisy.my.id",
     themeHex: "#0e221c",
@@ -111,23 +111,23 @@ if (project) {
   project.pageHeroImage = project.homepageImage;
   
   if (project.slug.current === 'takina-md') {
-    project.bodyRaw = "<p>Takina MD adalah sebuah bot WhatsApp canggih berbasis Multi-Device yang dirancang untuk skalabilitas dan performa tinggi. Dibangun menggunakan framework <strong>Baileys</strong> dan <strong>Node.js</strong>, bot ini memiliki arsitektur modular yang mendukung lebih dari 500+ plugin interaktif.</p><br/><p>Fitur utama meliputi integrasi dengan 43+ model AI, sistem RPG game yang imersif, manajemen grup otomatis, dan berbagai alat utilitas lainnya. Data disimpan menggunakan SQLite dengan mode WAL untuk menjamin stabilitas dan kecepatan tinggi bahkan saat trafik padat.</p>";
+    project.bodyRaw = "<p>Takina MD is an advanced WhatsApp Multi-Device bot architected for ultimate scalability and high performance. Built on top of the <strong>Baileys</strong> framework and <strong>Node.js</strong>, it boasts a modular architecture supporting over 500+ interactive plugins.</p><br/><p>Core features include seamless integration with 43+ AI models, an immersive RPG gaming system, automated group management, and versatile utility tools. Data is securely managed using SQLite with WAL mode, ensuring stability and blazing-fast response times even under heavy traffic.</p>";
   } else if (project.slug.current === 'sewa-bot') {
-    project.bodyRaw = "<p>Sewa Bot System adalah platform otomasi penyewaan bot WhatsApp yang memungkinkan pengguna untuk menyewa <em>instance</em> bot secara mandiri.</p><br/><p>Sistem ini dirancang dengan fitur <em>auto-expiration</em>, integrasi <em>payment gateway</em>, dan manajemen database terisolasi untuk masing-masing penyewa. Ini memastikan keamanan data privasi dan memberikan pengalaman operasional yang lepas tangan (hands-free) bagi admin.</p>";
+    project.bodyRaw = "<p>The Sewa Bot System is an automated WhatsApp bot rental platform that empowers users to easily deploy and rent their own bot instances independently.</p><br/><p>The system is engineered with auto-expiration tracking, seamless payment gateway integration, and isolated database management for each tenant. This architecture guarantees data privacy and provides a completely hands-free operational experience for the administrator.</p>";
   } else if (project.slug.current === 'jadibot-engine') {
-    project.bodyRaw = "<p>Jadibot Engine adalah sistem kloning inovatif yang memungkinkan pengguna menghubungkan nomor WhatsApp mereka sendiri ke dalam bot (menjadikan nomor mereka bot sementara).</p><br/><p>Setiap sesi kloning berjalan secara independen namun tetap dapat berbagi sumber daya dari database SQLite pusat. Fitur ini sangat berguna untuk pengguna yang ingin merasakan memiliki bot sendiri tanpa harus mengatur server, hosting, maupun dependensi teknis lainnya.</p>";
+    project.bodyRaw = "<p>Jadibot Engine is an innovative session-cloning system that allows users to link their personal WhatsApp numbers to the bot ecosystem, temporarily transforming their accounts into functioning bots.</p><br/><p>Every cloned session operates independently while intelligently sharing resources from a centralized SQLite database. This feature is perfect for users who want to experience owning a bot without the hassle of server configuration, hosting, or technical dependencies.</p>";
   } else if (project.slug.current === 'alsya-api') {
-    project.bodyRaw = "<p>Alsya API adalah layanan REST API komprehensif yang dirancang untuk mendukung ekosistem bot WhatsApp dan aplikasi web. Dengan infrastruktur yang kuat, API ini menyediakan berbagai endpoint penting mulai dari utilitas data hingga pemrosesan media.</p><br/><p>Fokus utama layanan ini adalah memberikan respons berkecepatan tinggi (low latency) dengan jaminan uptime yang stabil, memudahkan developer lain untuk membangun fitur tanpa harus mengelola backend kompleks sendiri.</p>";
+    project.bodyRaw = "<p>Alsya API is a comprehensive REST API service specifically designed to power WhatsApp bot ecosystems and modern web applications. Backed by robust infrastructure, it provides essential endpoints ranging from data utilities to intensive media processing.</p><br/><p>The primary focus of this service is delivering ultra-low latency responses with rock-solid uptime guarantees, enabling developers to build sophisticated features without the burden of managing complex backend systems.</p>";
   } else if (project.slug.current === 'svazer-cdn') {
-    project.bodyRaw = "<p>Svazer CDN adalah sistem Content Delivery Network dan platform manajemen file yang dirancang untuk kecepatan dan efisiensi. Sangat cocok digunakan untuk meng-hosting gambar, dokumen, dan media lainnya yang di-generate oleh bot.</p><br/><p>Sistem ini memberikan pengalaman upload yang mulus dengan antarmuka yang ramah pengguna, serta menjamin aset media Anda dapat diakses dengan cepat dari mana saja tanpa membebani server utama bot.</p>";
+    project.bodyRaw = "<p>Svazer CDN is a lightning-fast Content Delivery Network and file management platform engineered for speed and efficiency. It serves as the ideal hosting solution for images, documents, and other media assets generated by the bots.</p><br/><p>The system provides a frictionless uploading experience with a user-friendly interface, ensuring your media assets are instantly accessible globally without straining the primary bot servers.</p>";
   } else if (project.slug.current === 'afixd-ai') {
-    project.bodyRaw = "<p>Afixd AI adalah asisten chatbot multimodal tingkat lanjut yang dirancang untuk menangani berbagai bentuk instruksi dengan presisi. Platform ini mengintegrasikan lebih dari 10 model AI tercanggih di industri.</p><br/><p>Aplikasi ini memiliki antarmuka yang modern dan responsif, tidak hanya menangani teks tetapi juga pemrosesan gambar, pengenalan suara, hingga analisis dokumen secara cerdas dan efisien.</p>";
+    project.bodyRaw = "<p>Afixd AI is an advanced multimodal chatbot assistant designed to process a wide variety of instructions with absolute precision. The platform proudly integrates over 10 of the industry's most cutting-edge AI models.</p><br/><p>Featuring a sleek, highly responsive interface, the application goes beyond simple text generation—it excels in intelligent image processing, voice recognition, and efficient document analysis, offering a truly next-generation AI experience.</p>";
   } else if (project.slug.current === 'axd-downloader') {
-    project.bodyRaw = "<p>Axd Downloader merupakan platform utilitas <em>all-in-one</em> yang mempermudah pengunduhan aset digital dari berbagai jejaring media sosial. Solusi praktis untuk mengarsipkan konten favorit Anda.</p><br/><p>Dengan sistem backend yang kuat, aplikasi ini dapat memproses dan mengunduh video, gambar, maupun audio dalam berbagai resolusi secara cepat dan aman tanpa batasan limit yang mengganggu.</p>";
+    project.bodyRaw = "<p>Axd Downloader is an <em>all-in-one</em> utility platform that streamlines the process of downloading digital assets across various social media networks. It is the ultimate practical solution for archiving your favorite online content.</p><br/><p>Powered by a robust backend system, the application rapidly processes and securely downloads videos, images, and audio in multiple resolutions without any frustrating limitations or paywalls.</p>";
   } else if (project.slug.current === 'axd-player') {
-    project.bodyRaw = "<p>AXD Player adalah aplikasi web pemutar musik modern yang memberikan pengalaman streaming audio premium langsung dari peramban (browser) Anda tanpa perlu instalasi aplikasi tambahan.</p><br/><p>Pengguna dapat langsung mencari direktori lagu dari YouTube, memutarnya secara instan dengan antarmuka pemutar yang elegan, dan mengunduhnya ke dalam format MP3 berkualitas tinggi untuk dinikmati secara offline.</p>";
+    project.bodyRaw = "<p>AXD Player is a modern web-based music application that delivers a premium audio streaming experience directly from your browser, completely eliminating the need for third-party software installations.</p><br/><p>Users can effortlessly search the massive YouTube directory, play tracks instantly via an elegant player interface, and download high-quality MP3 files to enjoy their favorite music offline.</p>";
   } else if (project.slug.current === 'alfixd-image-tools') {
-    project.bodyRaw = "<p>Alfixd Image Tools adalah studio pengeditan gambar komprehensif yang ditenagai oleh Kecerdasan Buatan (AI) untuk mempercepat alur kerja visual Anda secara dramatis.</p><br/><p>Platform ini menawarkan fitur-fitur mutakhir seperti <strong>Upscale Gambar</strong> untuk meningkatkan resolusi tanpa pecah, <strong>Remove Background</strong> secara otomatis dan akurat, serta <strong>Edit dengan Prompt</strong> untuk mengubah gaya gambar hanya dengan menggunakan perintah teks kreatif.</p>";
+    project.bodyRaw = "<p>Alfixd Image Tools is a comprehensive visual editing studio powered by Artificial Intelligence, designed to dramatically accelerate your creative workflow.</p><br/><p>The platform offers state-of-the-art features such as <strong>Image Upscaling</strong> to enhance resolution without losing quality, highly accurate automatic <strong>Background Removal</strong>, and <strong>AI Prompt Editing</strong>, which allows you to transform the style and composition of your images using simple, creative text commands.</p>";
   }
 }
 
