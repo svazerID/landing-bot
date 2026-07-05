@@ -1,9 +1,9 @@
-# 🖥️ Svazer Corp.
+# 🖥️ Svazer The Great
 
-**Svazer Corp.** is a personal digital portfolio and ecosystem showcase for **Svazer Corp.**  
+**Svazer The Great** is a personal digital portfolio and ecosystem showcase for **Svazer The Great**.  
 It showcases projects, logbook entries, system architecture, and more—built with **Astro + React** and powered by **Sanity.io** as a headless CMS.
 
-![Svazer Corp. Preview](https://cdn.svazer.eu.cc/file/adef03f6.jpeg) <!-- optional placeholder -->
+![Svazer The Great Preview](https://cdn.svazer.eu.cc/file/adef03f6.jpeg) <!-- optional placeholder -->
 
 ---
 
@@ -124,9 +124,9 @@ Svazer Corp./
 
 ## 📄 License
 
-This project is private and proprietary to **Svazer Corp.**  
+This project is private and proprietary to **Svazer The Great.**  
 All rights reserved. Unauthorized copying, modification, or distribution is prohibited.
 
 ---
 
-*Made with ❤️ by the Svazer Corp. team.*
+*Made with ❤️ by the Svazer The Great team.*
