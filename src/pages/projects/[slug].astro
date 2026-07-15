@@ -99,6 +99,15 @@ allProjects = [
     themeHex: "#0e221c",
     device: "browser",
     homepageImage: "https://cdn.alfisy.my.id/file/629167.jpg"
+  },
+  {
+    title: "ZerAnime",
+    description: "Zeranime is top of free streaming website, where to watch anime online free without registration required. With a big database and great features, we're confident. Zeranime is the best free anime online website in the space that you can't simply miss!",
+    slug: { current: "zeranime" },
+    projectUrl: "https://zeranime.svazer.eu.cc",
+    themeHex: "#2a0a30",
+    device: "browser",
+    homepageImage: "https://cdn.alfisy.my.id/file/634418.jpg"
   }
 ];
 
@@ -128,6 +137,8 @@ if (project) {
     project.bodyRaw = "<p>AXD Player is a modern web-based music application that delivers a premium audio streaming experience directly from your browser, completely eliminating the need for third-party software installations.</p><br/><p>Users can effortlessly search the massive YouTube directory, play tracks instantly via an elegant player interface, and download high-quality MP3 files to enjoy their favorite music offline.</p>";
   } else if (project.slug.current === 'alfixd-image-tools') {
     project.bodyRaw = "<p>Alfixd Image Tools is a comprehensive visual editing studio powered by Artificial Intelligence, designed to dramatically accelerate your creative workflow.</p><br/><p>The platform offers state-of-the-art features such as <strong>Image Upscaling</strong> to enhance resolution without losing quality, highly accurate automatic <strong>Background Removal</strong>, and <strong>AI Prompt Editing</strong>, which allows you to transform the style and composition of your images using simple, creative text commands.</p>";
+  } else if (project.slug.current === 'zeranime') {
+    project.bodyRaw = "<p>ZerAnime is a dedicated streaming platform offering a vast collection of anime with Indonesian subtitles, designed to provide a seamless viewing experience for anime enthusiasts.</p><br/><p>The platform features rapid updates for the <strong>Latest Episodes</strong>, a comprehensive <strong>Schedule</strong> to track ongoing series, and a wide variety of categorizations across multiple <strong>Genres</strong> such as Action, Romance, Isekai, and Fantasy. Users can easily discover trending shows in the Spotlight section and curate their own watchlists using the built-in Favorites feature.</p>";
   }
 }
 
