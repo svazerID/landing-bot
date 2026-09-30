@@ -20,33 +20,6 @@ try {
 // Override with static data for bot portfolio
 allProjects = [
   {
-    title: "Takina MD",
-    description: "A comprehensive WhatsApp Multi-Device bot with 508+ plugins covering AI chat, media downloading, RPG games, and group management. Powered by Baileys & Node.js.",
-    slug: { current: "takina-md" },
-    projectUrl: "https://chat.whatsapp.com/Jmol4sl3VGA6f5gjmExkWK",
-    themeHex: "#1a0f30",
-    device: "iphone",
-    homepageImage: "https://cdn.alfisy.my.id/file/786163.jpg"
-  },
-  {
-    title: "Sewa Bot System",
-    description: "An automated rental bot system allowing users to rent bot instances. Features include auto-expiration, payment integration, and isolated databases.",
-    slug: { current: "sewa-bot" },
-    projectUrl: "https://takina.svazer.eu.cc",
-    themeHex: "#121f1a",
-    device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/631341.jpg"
-  },
-  {
-    title: "Jadibot Engine",
-    description: "A cloning engine that enables users to connect their own WhatsApp numbers to the bot. Features independent sessions with a shared persistent SQLite database.",
-    slug: { current: "jadibot-engine" },
-    projectUrl: "https://jadibot-nih-bang.vercel.app",
-    themeHex: "#300a0a",
-    device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/283543.jpg"
-  },
-  {
     title: "Alsya API",
     description: "A robust REST API service providing reliable endpoints for bots and web applications. Built for high performance and maximum uptime.",
     slug: { current: "alsya-api" },
@@ -65,13 +38,13 @@ allProjects = [
     homepageImage: "https://files.catbox.moe/f7p2j6.jpg"
   },
   {
-    title: "Alfixd AI",
-    description: "An advanced multimodal chatbot assistant integrating 10+ top-tier AI models. Built with a modern interface for text, image, and voice processing.",
-    slug: { current: "alfixd-ai" },
-    projectUrl: "https://ai.alfisy.my.id",
+    title: "Svazer AI",
+    description: "Svazer AI Web is an interface portal for interacting with Svazer, a multimodal AI assistant.",
+    slug: { current: "svazer-ai" },
+    projectUrl: "https://ai.svazer.eu.cc",
     themeHex: "#0a1828",
     device: "iphone",
-    homepageImage: "https://cdn.alfisy.my.id/file/682495.jpg"
+    homepageImage: "https://cdn.alfisy.my.id/file/749647.jpg"
   },
   {
     title: "Axd Downloader",
@@ -92,22 +65,31 @@ allProjects = [
     homepageImage: "https://cdn.alfisy.my.id/file/121729.jpg"
   },
   {
-    title: "Alfixd Image Tools",
-    description: "An AI-powered image editing studio featuring one-click Image Upscaling, Automatic Background Removal, and Creative AI Prompt Editing.",
-    slug: { current: "alfixd-image-tools" },
-    projectUrl: "https://img-tool.alfisy.my.id",
+    title: "ZerDonghua",
+    description: "The most complete Donghua (Chinese anime) 3D and 2D Indonesian subtitle streaming portal platform. Fastest updates every day with HD video quality & multi-server player.",
+    slug: { current: "zerdonghua" },
+    projectUrl: "https://zerdonghua.svazer.eu.cc",
     themeHex: "#0e221c",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/629167.jpg"
+    homepageImage: "https://cdn.alfisy.my.id/file/926793.jpg"
   },
   {
     title: "ZerAnime",
     description: "Zeranime is top of free streaming website, where to watch anime online free without registration required. With a big database and great features, we're confident. Zeranime is the best free anime online website in the space that you can't simply miss!",
     slug: { current: "zeranime" },
-    projectUrl: "https://zeranime.svazer.eu.cc",
+    projectUrl: "https://zeranime.up.railway.app",
     themeHex: "#2a0a30",
     device: "browser",
     homepageImage: "https://cdn.alfisy.my.id/file/634418.jpg"
+  },
+  {
+    title: "Zermovie",
+    description: "Zermovie is a web-based movie streaming platform that allows users to watch a wide variety of movie content for free.",
+    slug: { current: "zermovie" },
+    projectUrl: "https://zermovie.svazer.eu.cc",
+    themeHex: "#0a1828",
+    device: "browser",
+    homepageImage: "https://cdn.alfisy.my.id/file/855740.jpg"
   }
 ];
 
@@ -115,30 +97,26 @@ project = allProjects.find((p: any) => p.slug.current === slug) || null;
 if (project) {
   project.role = "Lead Developer";
   project.year = "2024";
-  project.stack = "Node.js, Baileys, SQLite";
+  project.stack = "Node.js, Next.js, SQLite, Astro, React";
   project.status = "Active";
   project.pageHeroImage = project.homepageImage;
   
-  if (project.slug.current === 'takina-md') {
-    project.bodyRaw = "<p>Takina MD is an advanced WhatsApp Multi-Device bot architected for ultimate scalability and high performance. Built on top of the <strong>Baileys</strong> framework and <strong>Node.js</strong>, it boasts a modular architecture supporting over 500+ interactive plugins.</p><br/><p>Core features include seamless integration with 43+ AI models, an immersive RPG gaming system, automated group management, and versatile utility tools. Data is securely managed using SQLite with WAL mode, ensuring stability and blazing-fast response times even under heavy traffic.</p>";
-  } else if (project.slug.current === 'sewa-bot') {
-    project.bodyRaw = "<p>The Sewa Bot System is an automated WhatsApp bot rental platform that empowers users to easily deploy and rent their own bot instances independently.</p><br/><p>The system is engineered with auto-expiration tracking, seamless payment gateway integration, and isolated database management for each tenant. This architecture guarantees data privacy and provides a completely hands-free operational experience for the administrator.</p>";
-  } else if (project.slug.current === 'jadibot-engine') {
-    project.bodyRaw = "<p>Jadibot Engine is an innovative session-cloning system that allows users to link their personal WhatsApp numbers to the bot ecosystem, temporarily transforming their accounts into functioning bots.</p><br/><p>Every cloned session operates independently while intelligently sharing resources from a centralized SQLite database. This feature is perfect for users who want to experience owning a bot without the hassle of server configuration, hosting, or technical dependencies.</p>";
-  } else if (project.slug.current === 'alsya-api') {
+  if (project.slug.current === 'alsya-api') {
     project.bodyRaw = "<p>Alsya API is a comprehensive REST API service specifically designed to power WhatsApp bot ecosystems and modern web applications. Backed by robust infrastructure, it provides essential endpoints ranging from data utilities to intensive media processing.</p><br/><p>The primary focus of this service is delivering ultra-low latency responses with rock-solid uptime guarantees, enabling developers to build sophisticated features without the burden of managing complex backend systems.</p>";
   } else if (project.slug.current === 'svazer-cdn') {
     project.bodyRaw = "<p>Svazer CDN is a lightning-fast Content Delivery Network and file management platform engineered for speed and efficiency. It serves as the ideal hosting solution for images, documents, and other media assets generated by the bots.</p><br/><p>The system provides a frictionless uploading experience with a user-friendly interface, ensuring your media assets are instantly accessible globally without straining the primary bot servers.</p>";
-  } else if (project.slug.current === 'alfixd-ai') {
-    project.bodyRaw = "<p>Alfixd AI is an advanced multimodal chatbot assistant designed to process a wide variety of instructions with absolute precision. The platform proudly integrates over 10 of the industry's most cutting-edge AI models.</p><br/><p>Featuring a sleek, highly responsive interface, the application goes beyond simple text generation—it excels in intelligent image processing, voice recognition, and efficient document analysis, offering a truly next-generation AI experience.</p>";
+  } else if (project.slug.current === 'svazer-ai') {
+    project.bodyRaw = "<p>Svazer AI Web is an interface portal for interacting with Svazer, a multimodal AI assistant. Its function helps users in various things such as writing programming code, analyzing images, solving technical problems, and answering general questions in a fast, neat and structured way. This website is designed to be easy to use via a browser on any device.</p>";
   } else if (project.slug.current === 'axd-downloader') {
     project.bodyRaw = "<p>Axd Downloader is an <em>all-in-one</em> utility platform that streamlines the process of downloading digital assets across various social media networks. It is the ultimate practical solution for archiving your favorite online content.</p><br/><p>Powered by a robust backend system, the application rapidly processes and securely downloads videos, images, and audio in multiple resolutions without any frustrating limitations or paywalls.</p>";
   } else if (project.slug.current === 'axd-player') {
     project.bodyRaw = "<p>AXD Player is a modern web-based music application that delivers a premium audio streaming experience directly from your browser, completely eliminating the need for third-party software installations.</p><br/><p>Users can effortlessly search the massive YouTube directory, play tracks instantly via an elegant player interface, and download high-quality MP3 files to enjoy their favorite music offline.</p>";
-  } else if (project.slug.current === 'alfixd-image-tools') {
-    project.bodyRaw = "<p>Alfixd Image Tools is a comprehensive visual editing studio powered by Artificial Intelligence, designed to dramatically accelerate your creative workflow.</p><br/><p>The platform offers state-of-the-art features such as <strong>Image Upscaling</strong> to enhance resolution without losing quality, highly accurate automatic <strong>Background Removal</strong>, and <strong>AI Prompt Editing</strong>, which allows you to transform the style and composition of your images using simple, creative text commands.</p>";
+  } else if (project.slug.current === 'zerdonghua') {
+    project.bodyRaw = "<p>The most complete Donghua (Chinese anime) 3D and 2D Indonesian subtitle streaming portal platform. Fastest updates every day with HD video quality & multi-server player.</p>";
   } else if (project.slug.current === 'zeranime') {
     project.bodyRaw = "<p>ZerAnime is a dedicated streaming platform offering a vast collection of anime with Indonesian subtitles, designed to provide a seamless viewing experience for anime enthusiasts.</p><br/><p>The platform features rapid updates for the <strong>Latest Episodes</strong>, a comprehensive <strong>Schedule</strong> to track ongoing series, and a wide variety of categorizations across multiple <strong>Genres</strong> such as Action, Romance, Isekai, and Fantasy. Users can easily discover trending shows in the Spotlight section and curate their own watchlists using the built-in Favorites feature.</p>";
+  } else if (project.slug.current === 'zermovie') {
+    project.bodyRaw = "<p>Zermovie is a web-based movie streaming platform that allows users to watch a wide variety of movie content for free. The interface of this site is designed to be simple with easy navigation to search for certain categories or film titles. Users can play videos directly without having to go through a complicated account registration process. Apart from that, this site provides a quick search feature as well as genre categories to help users find the shows they want. Overall, this is a handy entertainment service for those who want to watch movies online with instant access.</p>";
   }
 }
 

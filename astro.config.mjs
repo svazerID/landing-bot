@@ -1,12 +1,8 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-
+import cloudflare from '@astrojs/cloudflare';
 import sanity from '@sanity/astro';
 import react from '@astrojs/react';
 
-import vercel from '@astrojs/vercel';
-
-// https://astro.build/config
 export default defineConfig({
   integrations: [
     sanity({
@@ -18,6 +14,5 @@ export default defineConfig({
     }),
     react()
   ],
-
-  adapter: vercel()
+  adapter: cloudflare()
 });
