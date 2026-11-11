@@ -21,75 +21,129 @@ try {
 allProjects = [
   {
     title: "Alsya API",
-    description: "A robust REST API service providing reliable endpoints for bots and web applications. Built for high performance and maximum uptime.",
+    description: "A single gateway to 135 endpoints across nine categories: AI, tools, search, download, stalker, anime, news, maker and random. Every endpoint can be tested live straight from the browser directory, with docs and Swagger alongside it.",
     slug: { current: "alsya-api" },
-    projectUrl: "https://api.alfisy.my.id",
+    projectUrl: "https://alsya.svazer.eu.cc",
     themeHex: "#0f1a30",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/311385.jpg"
+    homepageImage: "/projects/alsya.jpg"
   },
   {
     title: "Svazer CDN",
-    description: "A lightning-fast Content Delivery Network tailored for media hosting and seamless file uploads. Designed to ensure secure and instant access.",
+    description: "A file hosting endpoint. Drop a file up to 25 MB, get back a permanent /file/<filename> link, and share it anywhere. Upload by drag & drop from the browser, or from code with a single POST request. Every format is accepted.",
     slug: { current: "svazer-cdn" },
     projectUrl: "https://cdn.svazer.eu.cc",
     themeHex: "#2a0a30",
     device: "browser",
-    homepageImage: "https://files.catbox.moe/f7p2j6.jpg"
+    homepageImage: "/projects/svazer-cdn.jpg"
   },
   {
     title: "Svazer AI",
-    description: "Svazer AI Web is an interface portal for interacting with Svazer, a multimodal AI assistant.",
+    description: "Svazer AI is a web chat interface for a multimodal assistant. Upload an image, analyze data, brainstorm, write code, or talk to it with voice, all in one thread.",
     slug: { current: "svazer-ai" },
     projectUrl: "https://ai.svazer.eu.cc",
     themeHex: "#0a1828",
     device: "iphone",
-    homepageImage: "https://cdn.alfisy.my.id/file/749647.jpg"
+    homepageImage: "/projects/svazer-ai.jpg"
   },
   {
     title: "Axd Downloader",
-    description: "An all-in-one centralized downloading platform to easily save videos, images, and audio from various social media networks.",
+    description: "A media download API you can call from anything. Send one URL, get back a JSON response with a direct file link, no API key required. Supports YouTube, Spotify, X/Twitter, Facebook, Dailymotion and Vimeo, with full OpenAPI docs and a health endpoint for uptime checks.",
     slug: { current: "axd-downloader" },
-    projectUrl: "https://vdl.alfisy.my.id",
+    projectUrl: "https://download.svazer.us.ci",
     themeHex: "#2d1b11",
-    device: "iphone",
-    homepageImage: "https://cdn.alfisy.my.id/file/442881.jpg"
+    device: "browser",
+    homepageImage: "/projects/axd-downloader.jpg"
   },
   {
-    title: "Axd Player",
-    description: "A sleek, modern web music player offering premium streaming experiences. Search YouTube tracks, play instantly, and download high-quality MP3s.",
-    slug: { current: "axd-player" },
-    projectUrl: "https://play.alfisy.my.id/",
+    title: "Svazer Playlist",
+    description: "A Spotify playlist player that actually works without logging in. Paste any public playlist link and every track loads instantly with cover art, artist names and a built-in search. Includes a mini player, queue view and a light/dark theme toggle.",
+    slug: { current: "svazer-playlist" },
+    projectUrl: "https://spotify-playlist.svazer.us.ci",
     themeHex: "#1c0d22",
     device: "iphone",
-    homepageImage: "https://cdn.alfisy.my.id/file/121729.jpg"
+    homepageImage: "/projects/svazer-playlist.jpg"
   },
   {
     title: "ZerDonghua",
-    description: "The most complete Donghua (Chinese anime) 3D and 2D Indonesian subtitle streaming portal platform. Fastest updates every day with HD video quality & multi-server player.",
+    description: "A streaming portal dedicated to donghua, Chinese 3D and 2D animation, with Indonesian subtitles. Fresh episodes daily in HD, a multi-server player, release schedule and genre browsing.",
     slug: { current: "zerdonghua" },
-    projectUrl: "https://zerdonghua.svazer.eu.cc",
+    projectUrl: "https://donghua.svazer.us.ci",
     themeHex: "#0e221c",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/926793.jpg"
+    homepageImage: "/projects/zerdonghua.jpg"
   },
   {
     title: "ZerAnime",
-    description: "Zeranime is top of free streaming website, where to watch anime online free without registration required. With a big database and great features, we're confident. Zeranime is the best free anime online website in the space that you can't simply miss!",
+    description: "A free anime streaming site with no sign-up required. Browse by genre, follow the weekly release schedule, save favourites, and pick up right where you left off.",
     slug: { current: "zeranime" },
-    projectUrl: "https://zeranime.up.railway.app",
+    projectUrl: "https://anime.svazer.us.ci",
     themeHex: "#2a0a30",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/634418.jpg"
+    homepageImage: "/projects/zeranime.jpg"
   },
   {
     title: "Zermovie",
-    description: "Zermovie is a web-based movie streaming platform that allows users to watch a wide variety of movie content for free.",
+    description: "A movie and series streaming site with Indonesian subtitles. Curated collections, genre filters, a release schedule and an installable app, so you can watch on any device without paying a subscription.",
     slug: { current: "zermovie" },
-    projectUrl: "https://zermovie.svazer.eu.cc",
+    projectUrl: "https://movie.svazer.us.ci",
     themeHex: "#0a1828",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/855740.jpg"
+    homepageImage: "/projects/zermovie.jpg"
+  },
+  {
+    title: "ZerDrakor",
+    description: "A Korean drama streaming site with Indonesian subtitles. Explore the catalogue by genre or popularity, follow the weekly airing schedule, keep a personal watchlist, and search by title or actor.",
+    slug: { current: "zerdrakor" },
+    projectUrl: "https://drakor.svazer.us.ci",
+    themeHex: "#240a0a",
+    device: "browser",
+    homepageImage: "/projects/zerdrakor.jpg"
+  },
+  {
+    title: "Svazer Bot Gateway",
+    description: "Run a WhatsApp bot without owning a server. Pair your account in under a minute from a dashboard, switch on the plugins you need, and let it keep working 24/7 while you sleep. Ships with 90+ ready-made plugins.",
+    slug: { current: "gtwbot" },
+    projectUrl: "https://gtwbot.svazer.us.ci",
+    themeHex: "#0a1f16",
+    device: "browser",
+    homepageImage: "/projects/gtwbot.jpg"
+  },
+  {
+    title: "Takina MD",
+    description: "A full WhatsApp bot ecosystem with multi-model AI integration, a deep RPG system, a universal downloader and 500+ commands ready to use. Built on an elegant, scalable plugin architecture.",
+    slug: { current: "takina" },
+    projectUrl: "https://takina.svazer.eu.cc",
+    themeHex: "#140f30",
+    device: "browser",
+    homepageImage: "/projects/takina.jpg"
+  },
+  {
+    title: "Zerpaste",
+    description: "A pastebin that stays out of your way. Drop code or text into a box and get a shareable link back, with syntax highlighting for 19 languages, optional password protection, unlisted mode, and expiry times from 10 minutes up to forever.",
+    slug: { current: "zerpaste" },
+    projectUrl: "https://zerpaste.svazer.workers.dev",
+    themeHex: "#0a0f20",
+    device: "browser",
+    homepageImage: "/projects/zerpaste.jpg"
+  },
+  {
+    title: "SvazerPRD",
+    description: "Turn a rough idea into something buildable. Describe what you want and get back a structured PRD, a UI prototype, or an application skeleton, ready to hand to a coding agent. Free, no login, with the quota resetting daily.",
+    slug: { current: "svazer-prd" },
+    projectUrl: "https://prd.svazer.us.ci",
+    themeHex: "#0f1030",
+    device: "browser",
+    homepageImage: "/projects/svazer-prd.jpg"
+  },
+  {
+    title: "Semantika",
+    description: "An interactive hub for learning semantic HTML5 properly. Work through 34 documented elements by category, build a page element by element, run a linter and accessibility audit on your markup, then test yourself with quizzes and a cheatsheet.",
+    slug: { current: "semantika" },
+    projectUrl: "https://semantika.svazer.us.ci",
+    themeHex: "#1a1626",
+    device: "browser",
+    homepageImage: "/projects/semantika.jpg"
   }
 ];
 
@@ -104,19 +158,31 @@ if (project) {
   if (project.slug.current === 'alsya-api') {
     project.bodyRaw = "<p>Alsya API is a comprehensive REST API service specifically designed to power WhatsApp bot ecosystems and modern web applications. Backed by robust infrastructure, it provides essential endpoints ranging from data utilities to intensive media processing.</p><br/><p>The primary focus of this service is delivering ultra-low latency responses with rock-solid uptime guarantees, enabling developers to build sophisticated features without the burden of managing complex backend systems.</p>";
   } else if (project.slug.current === 'svazer-cdn') {
-    project.bodyRaw = "<p>Svazer CDN is a lightning-fast Content Delivery Network and file management platform engineered for speed and efficiency. It serves as the ideal hosting solution for images, documents, and other media assets generated by the bots.</p><br/><p>The system provides a frictionless uploading experience with a user-friendly interface, ensuring your media assets are instantly accessible globally without straining the primary bot servers.</p>";
+    project.bodyRaw = "<p>Svazer CDN is a small file hosting endpoint built for one job: give a file a permanent, shareable link. Upload through the browser by selecting or dragging a file, or send it from code with a single POST request and receive back a JSON response with the public URL.</p><br/><p>Files up to 25 MB are accepted in any format and served from a <code>/file/&lt;filename&gt;</code> path, which keeps them easy to embed in bots, documents, or web pages without depending on a third-party host.</p>";
   } else if (project.slug.current === 'svazer-ai') {
-    project.bodyRaw = "<p>Svazer AI Web is an interface portal for interacting with Svazer, a multimodal AI assistant. Its function helps users in various things such as writing programming code, analyzing images, solving technical problems, and answering general questions in a fast, neat and structured way. This website is designed to be easy to use via a browser on any device.</p>";
+    project.bodyRaw = "<p>Svazer AI is a browser-based chat interface for a multimodal assistant. It answers general questions, writes and debugs code, analyzes uploaded images, and works through technical problems in a structured way.</p><br/><p>Beyond text, the interface supports voice conversation, web search, image generation and data analysis, keeping everything in a single thread. It runs entirely in the browser on any device, with no installation required.</p>";
   } else if (project.slug.current === 'axd-downloader') {
-    project.bodyRaw = "<p>Axd Downloader is an <em>all-in-one</em> utility platform that streamlines the process of downloading digital assets across various social media networks. It is the ultimate practical solution for archiving your favorite online content.</p><br/><p>Powered by a robust backend system, the application rapidly processes and securely downloads videos, images, and audio in multiple resolutions without any frustrating limitations or paywalls.</p>";
-  } else if (project.slug.current === 'axd-player') {
-    project.bodyRaw = "<p>AXD Player is a modern web-based music application that delivers a premium audio streaming experience directly from your browser, completely eliminating the need for third-party software installations.</p><br/><p>Users can effortlessly search the massive YouTube directory, play tracks instantly via an elegant player interface, and download high-quality MP3 files to enjoy their favorite music offline.</p>";
+    project.bodyRaw = "<p>Axd Downloader is a <em>media download API</em> rather than a web interface. Send a single URL to the endpoint and it replies with JSON containing a direct file link, so it drops cleanly into bots, scripts, or any application that needs media extraction.</p><br/><p>It handles YouTube, Spotify, X/Twitter, Facebook, Dailymotion and Vimeo, and requires no API key. The service ships with full OpenAPI documentation plus a <code>/health</code> endpoint for uptime monitoring, and downloaded files are removed automatically after a configurable time-to-live.</p>";
+  } else if (project.slug.current === 'svazer-playlist') {
+    project.bodyRaw = "<p>Svazer Playlist is a web-based Spotify playlist player that works without a Spotify account or login. Paste any public playlist link and the full track list loads right in the browser, complete with cover art and artist names.</p><br/><p>The interface includes instant search across the loaded tracks, a mini player docked at the bottom, a queue view to see what is coming up next, and a light/dark theme toggle for comfortable listening at any hour.</p>";
   } else if (project.slug.current === 'zerdonghua') {
-    project.bodyRaw = "<p>The most complete Donghua (Chinese anime) 3D and 2D Indonesian subtitle streaming portal platform. Fastest updates every day with HD video quality & multi-server player.</p>";
+    project.bodyRaw = "<p>ZerDonghua is a streaming portal dedicated to donghua, Chinese 3D and 2D animation, delivered with Indonesian subtitles. It covers cultivation, martial arts, fantasy and sci-fi series, with fresh episodes added daily in HD.</p><br/><p>The site includes a Spotlight carousel for featured titles, a multi-server player, a release schedule so you never miss an episode, a bookmark system, and genre browsing across the full catalogue.</p>";
   } else if (project.slug.current === 'zeranime') {
-    project.bodyRaw = "<p>ZerAnime is a dedicated streaming platform offering a vast collection of anime with Indonesian subtitles, designed to provide a seamless viewing experience for anime enthusiasts.</p><br/><p>The platform features rapid updates for the <strong>Latest Episodes</strong>, a comprehensive <strong>Schedule</strong> to track ongoing series, and a wide variety of categorizations across multiple <strong>Genres</strong> such as Action, Romance, Isekai, and Fantasy. Users can easily discover trending shows in the Spotlight section and curate their own watchlists using the built-in Favorites feature.</p>";
+    project.bodyRaw = "<p>ZerAnime is a free anime streaming site that requires no registration. Its catalogue is organized around a <strong>Latest Updated</strong> feed for ongoing series, a weekly <strong>Schedule</strong>, and a broad set of <strong>Genres</strong> including Action, Romance, Isekai and Fantasy.</p><br/><p>Featured shows appear in a Spotlight section, and the built-in Favorites feature lets you curate a personal watchlist across devices.</p>";
   } else if (project.slug.current === 'zermovie') {
-    project.bodyRaw = "<p>Zermovie is a web-based movie streaming platform that allows users to watch a wide variety of movie content for free. The interface of this site is designed to be simple with easy navigation to search for certain categories or film titles. Users can play videos directly without having to go through a complicated account registration process. Apart from that, this site provides a quick search feature as well as genre categories to help users find the shows they want. Overall, this is a handy entertainment service for those who want to watch movies online with instant access.</p>";
+    project.bodyRaw = "<p>Zermovie is a streaming site for movies and series, presented with Indonesian subtitles. Curated collections such as the Netflix picks, plus genre filters and search, make it quick to find something to watch.</p><br/><p>Everything plays directly in the browser with no account required, and the site can be installed as an app for a more native viewing experience on mobile.</p>";
+  } else if (project.slug.current === 'zerdrakor') {
+    project.bodyRaw = "<p>ZerDrakor is a streaming site dedicated to Korean dramas with Indonesian subtitles. The catalogue is browsable by genre, with a popularity ranking and a Spotlight carousel for standout titles.</p><br/><p>Beyond watching, the site helps you keep track: a weekly airing schedule shows when new episodes drop, and a personal Watchlist lets you bookmark series to continue later. Search covers both titles and actors, so finding a specific drama or a favourite cast member is a single query away.</p>";
+  } else if (project.slug.current === 'gtwbot') {
+    project.bodyRaw = "<p>Svazer Bot Gateway is a hosted gateway for WhatsApp bots, aimed at people who want a working bot without provisioning a VPS or keeping a process alive themselves. Pairing an account takes under a minute, after which the bot runs continuously in the cloud.</p><br/><p>From a single dashboard you can manage connections, monitor bot status, and enable the plugins you actually need from a library of 90+ built-ins. The stack combines Node.js and Socket.IO on top of zapo-js, with an AI model for conversational features.</p>";
+  } else if (project.slug.current === 'takina') {
+    project.bodyRaw = "<p>Takina MD is a WhatsApp bot ecosystem built around a plugin architecture that stays readable as it grows. It bundles multi-model AI integration, a substantial RPG system, and a universal downloader, with more than 500 commands ready out of the box.</p><br/><p>The goal is breadth without chaos: features are split into discoverable modules, so new capabilities can be added without destabilising existing ones. The project ships with a full feature tour, a searchable command reference, an architecture walkthrough, and a gallery of its output.</p>";
+  } else if (project.slug.current === 'zerpaste') {
+    project.bodyRaw = "<p>Zerpaste is a deliberately minimal pastebin. Paste code, logs, or plain text into a box and receive a link that others can open, with syntax highlighting for 19 languages including JavaScript, TypeScript, Python, Go, Rust and SQL.</p><br/><p>It also covers the cases where a plain pastebin is not enough: expiry times ranging from 10 minutes to 30 days or never, optional password protection on the resulting link, an unlisted mode that hides it from the public feed, burn-after-read, and automatic line wrapping.</p>";
+  } else if (project.slug.current === 'svazer-prd') {
+    project.bodyRaw = "<p>SvazerPRD turns an idea into a working starting point. Instead of writing a specification from scratch, you describe what you want to build and pick a mode, and the tool produces a structured PRD, a UI design, a prototype, or an application skeleton.</p><br/><p>The output is aimed at handoff: the generated plan is broken into features and ordered tasks that an AI coding agent can act on directly. It is free to use with no login required, and the daily quota resets at 07:00 WIB.</p>";
+  } else if (project.slug.current === 'semantika') {
+    project.bodyRaw = "<p>Semantika is a learning hub for semantic HTML5, built for developers who want to stop reaching for a <code>div</code> by default. It documents 34 elements across categories such as structure and landmarks, text content, media, interactive elements, forms, and tables.</p><br/><p>Each entry explains the element's meaning alongside its accessibility role, and the site backs that up with hands-on tools: a page builder that assembles markup one element at a time, a linter and accessibility auditor that checks your own HTML, comprehension quizzes, and a cheatsheet for quick reference.</p>";
   }
 }
 

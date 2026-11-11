@@ -24,75 +24,129 @@ try {
 projects = [
   {
     title: "Alsya API",
-    description: "A robust REST API service providing reliable endpoints for bots and web applications. Built for high performance and maximum uptime.",
+    description: "A single gateway to 135 endpoints across nine categories: AI, tools, search, download, stalker, anime, news, maker and random. Every endpoint can be tested live straight from the browser directory, with docs and Swagger alongside it.",
     slug: { current: "alsya-api" },
-    projectUrl: "https://api.alfisy.my.id",
+    projectUrl: "https://alsya.svazer.eu.cc",
     themeHex: "#0f1a30",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/311385.jpg"
+    homepageImage: "/projects/alsya.jpg"
   },
   {
     title: "Svazer CDN",
-    description: "A lightning-fast Content Delivery Network tailored for media hosting and seamless file uploads. Designed to ensure secure and instant access.",
+    description: "A file hosting endpoint. Drop a file up to 25 MB, get back a permanent /file/<filename> link, and share it anywhere. Upload by drag & drop from the browser, or from code with a single POST request. Every format is accepted.",
     slug: { current: "svazer-cdn" },
     projectUrl: "https://cdn.svazer.eu.cc",
     themeHex: "#2a0a30",
     device: "browser",
-    homepageImage: "https://files.catbox.moe/f7p2j6.jpg"
+    homepageImage: "/projects/svazer-cdn.jpg"
   },
   {
     title: "Svazer AI",
-    description: "Svazer AI Web is an interface portal for interacting with Svazer, a multimodal AI assistant.",
+    description: "Svazer AI is a web chat interface for a multimodal assistant. Upload an image, analyze data, brainstorm, write code, or talk to it with voice, all in one thread.",
     slug: { current: "svazer-ai" },
     projectUrl: "https://ai.svazer.eu.cc",
     themeHex: "#0a1828",
     device: "iphone",
-    homepageImage: "https://cdn.alfisy.my.id/file/749647.jpg"
+    homepageImage: "/projects/svazer-ai.jpg"
   },
   {
     title: "Axd Downloader",
-    description: "An all-in-one centralized downloading platform to easily save videos, images, and audio from various social media networks.",
+    description: "A media download API you can call from anything. Send one URL, get back a JSON response with a direct file link, no API key required. Supports YouTube, Spotify, X/Twitter, Facebook, Dailymotion and Vimeo, with full OpenAPI docs and a health endpoint for uptime checks.",
     slug: { current: "axd-downloader" },
-    projectUrl: "https://vdl.alfisy.my.id",
+    projectUrl: "https://download.svazer.us.ci",
     themeHex: "#2d1b11",
-    device: "iphone",
-    homepageImage: "https://cdn.alfisy.my.id/file/442881.jpg"
+    device: "browser",
+    homepageImage: "/projects/axd-downloader.jpg"
   },
   {
-    title: "Axd Player",
-    description: "A sleek, modern web music player offering premium streaming experiences. Search YouTube tracks, play instantly, and download high-quality MP3s.",
-    slug: { current: "axd-player" },
-    projectUrl: "https://play.alfisy.my.id/",
+    title: "Svazer Playlist",
+    description: "A Spotify playlist player that actually works without logging in. Paste any public playlist link and every track loads instantly with cover art, artist names and a built-in search. Includes a mini player, queue view and a light/dark theme toggle.",
+    slug: { current: "svazer-playlist" },
+    projectUrl: "https://spotify-playlist.svazer.us.ci",
     themeHex: "#1c0d22",
     device: "iphone",
-    homepageImage: "https://cdn.alfisy.my.id/file/121729.jpg"
+    homepageImage: "/projects/svazer-playlist.jpg"
   },
   {
     title: "ZerDonghua",
-    description: "The most complete Donghua (Chinese anime) 3D and 2D Indonesian subtitle streaming portal platform. Fastest updates every day with HD video quality & multi-server player.",
+    description: "A streaming portal dedicated to donghua, Chinese 3D and 2D animation, with Indonesian subtitles. Fresh episodes daily in HD, a multi-server player, release schedule and genre browsing.",
     slug: { current: "zerdonghua" },
-    projectUrl: "https://zerdonghua.svazer.eu.cc",
+    projectUrl: "https://donghua.svazer.us.ci",
     themeHex: "#0e221c",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/926793.jpg"
+    homepageImage: "/projects/zerdonghua.jpg"
   },
   {
     title: "ZerAnime",
-    description: "Zeranime is top of free streaming website, where to watch anime online free without registration required. With a big database and great features, we're confident. Zeranime is the best free anime online website in the space that you can't simply miss!",
+    description: "A free anime streaming site with no sign-up required. Browse by genre, follow the weekly release schedule, save favourites, and pick up right where you left off.",
     slug: { current: "zeranime" },
-    projectUrl: "https://zeranime.up.railway.app",
+    projectUrl: "https://anime.svazer.us.ci",
     themeHex: "#2a0a30",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/634418.jpg"
+    homepageImage: "/projects/zeranime.jpg"
   },
   {
     title: "Zermovie",
-    description: "Zermovie is a web-based movie streaming platform that allows users to watch a wide variety of movie content for free.",
+    description: "A movie and series streaming site with Indonesian subtitles. Curated collections, genre filters, a release schedule and a installable app, so you can watch on any device without paying a subscription.",
     slug: { current: "zermovie" },
-    projectUrl: "https://zermovie.svazer.eu.cc",
+    projectUrl: "https://movie.svazer.us.ci",
     themeHex: "#0a1828",
     device: "browser",
-    homepageImage: "https://cdn.alfisy.my.id/file/855740.jpg"
+    homepageImage: "/projects/zermovie.jpg"
+  },
+  {
+    title: "ZerDrakor",
+    description: "A Korean drama streaming site with Indonesian subtitles. Explore the catalogue by genre or popularity, follow the weekly airing schedule, keep a personal watchlist, and search by title or actor.",
+    slug: { current: "zerdrakor" },
+    projectUrl: "https://drakor.svazer.us.ci",
+    themeHex: "#240a0a",
+    device: "browser",
+    homepageImage: "/projects/zerdrakor.jpg"
+  },
+  {
+    title: "Svazer Bot Gateway",
+    description: "Run a WhatsApp bot without owning a server. Pair your account in under a minute from a dashboard, switch on the plugins you need, and let it keep working 24/7 while you sleep. Ships with 90+ ready-made plugins.",
+    slug: { current: "gtwbot" },
+    projectUrl: "https://gtwbot.svazer.us.ci",
+    themeHex: "#0a1f16",
+    device: "browser",
+    homepageImage: "/projects/gtwbot.jpg"
+  },
+  {
+    title: "Takina MD",
+    description: "A full WhatsApp bot ecosystem with multi-model AI integration, a deep RPG system, a universal downloader and 500+ commands ready to use. Built on an elegant, scalable plugin architecture.",
+    slug: { current: "takina" },
+    projectUrl: "https://takina.svazer.eu.cc",
+    themeHex: "#140f30",
+    device: "browser",
+    homepageImage: "/projects/takina.jpg"
+  },
+  {
+    title: "Zerpaste",
+    description: "A pastebin that stays out of your way. Drop code or text into a box and get a shareable link back, with syntax highlighting for 19 languages, optional password protection, unlisted mode, and expiry times from 10 minutes up to forever.",
+    slug: { current: "zerpaste" },
+    projectUrl: "https://zerpaste.svazer.workers.dev",
+    themeHex: "#0a0f20",
+    device: "browser",
+    homepageImage: "/projects/zerpaste.jpg"
+  },
+  {
+    title: "SvazerPRD",
+    description: "Turn a rough idea into something buildable. Describe what you want and get back a structured PRD, a UI prototype, or an application skeleton, ready to hand to a coding agent. Free, no login, with the quota resetting daily.",
+    slug: { current: "svazer-prd" },
+    projectUrl: "https://prd.svazer.us.ci",
+    themeHex: "#0f1030",
+    device: "browser",
+    homepageImage: "/projects/svazer-prd.jpg"
+  },
+  {
+    title: "Semantika",
+    description: "An interactive hub for learning semantic HTML5 properly. Work through 34 documented elements by category, build a page element by element, run a linter and accessibility audit on your markup, then test yourself with quizzes and a cheatsheet.",
+    slug: { current: "semantika" },
+    projectUrl: "https://semantika.svazer.us.ci",
+    themeHex: "#1a1626",
+    device: "browser",
+    homepageImage: "/projects/semantika.jpg"
   }
 ];
 
