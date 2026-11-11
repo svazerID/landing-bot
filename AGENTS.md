@@ -39,13 +39,43 @@ earlier version of this document.
 ```bash
 npm install         # no lockfile in this repo, see "Trap: lockfile" below
 npm run dev         # dev server on http://localhost:4321
-npm run build       # production build into dist/
+npm run build       # renders OG cards, then builds into dist/
+npm run generateOG  # only regenerate public/og/*.png
 npm run preview     # preview the build
 npx astro ...       # any Astro CLI command
 ```
 
+`npm run build` runs `scripts/generate-og.mjs` first, which renders the
+social preview images into `public/og/`. It reads the same static `projects`
+array as the homepage, so a newly added project gets a card automatically.
+Commit the generated PNGs; the build also regenerates them, but Cloudflare
+builds from the repo and the cards should be inspectable in a diff.
+
 There is **no test script** and no test framework installed for app code.
 `@playwright/test` is a devDependency but no test files exist in the repo.
+
+---
+
+## Open Graph and Twitter cards
+
+Every page renders `src/components/SeoMeta.astro` from its layout. It emits
+`og:*`, `twitter:*` and `<link rel="canonical">`.
+
+| Page | Image |
+| --- | --- |
+| `/` | `/og/default.png` |
+| `/projects/<slug>` | `/og/<slug>.png` |
+| logbook entry with a hero image | that image, cropped 1200×630 |
+| logbook, resume, 404 | `/og/default.png` |
+| 404 | also `noindex`, no canonical |
+
+The canonical origin lives in `src/utils/site.ts` (**not** `Astro.url`). On
+Cloudflare the request URL is the internal worker address, so deriving URLs from
+it would emit the wrong domain.
+
+Do not hand-write cards. To change their look, edit the SVG builders in
+`scripts/generate-og.mjs` and re-run `npm run generateOG`. If a project is
+renamed, delete `public/og/` first so stale files do not linger.
 
 ---
 
@@ -129,6 +159,10 @@ for every project, and redirects to `/404` when the slug is unknown.
 One JPEG per project in `public/projects/`, quality 88. PNG was tried and came
 out larger, so do not "optimize" back to PNG.
 
+These same JPEGs feed the social cards: `scripts/generate-og.mjs` crops each one
+into the right half of the 1200×630 image. A bad screenshot therefore also
+produces a bad preview card.
+
 | `device` | Capture size | Frame |
 | --- | --- | --- |
 | `"browser"` | desktop, roughly 1280–1500 px wide | `.glass-browser`, `16/10` |
@@ -201,7 +235,7 @@ Worker (`dist/server/entry.mjs`) plus assets, not static HTML. Opening
 ```
 src/
   components/   ProjectPanel, Gallery, Manifesto, ReadingTile, Footer,
-                CodeSnippet, PortableText
+                CodeSnippet, PortableText, SeoMeta (og/twitter/canonical)
   layouts/      HomeLayout.astro (homepage), MagazineLayout.astro (detail pages)
   pages/
     index.astro              homepage + project array
@@ -210,14 +244,17 @@ src/
     logbook/[slug].astro     logbook entry
     resume.astro
     studio/[...index].astro  embedded Sanity Studio
+    sitemap.xml.ts           dynamic sitemap
     404.astro
   schema/       Sanity types: project, logbookEntry, siteSettings, blockContent
   styles/       global.css
-  utils/        sanity.ts (client + image URL builder)
+  utils/        sanity.ts (client + image URL builder), site.ts (canonical origin)
 public/
   projects/     14 project screenshots
+  og/           generated social cards, one per page/project
   script.js     homepage behaviour, loaded by HomeLayout
   project.js    detail-page behaviour, loaded by MagazineLayout
+scripts/        generate-og.mjs (renders public/og via sharp)
 docs/           brand interview, moodboard, wireframe, audit
 ```
 

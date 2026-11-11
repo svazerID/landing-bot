@@ -26,9 +26,29 @@ const words = entry.body
       .split(/\s+/).length
   : 0;
 const readingTime = Math.ceil(words / 200);
+
+// The schema has no excerpt field, so the meta description is taken from the
+// opening body text and clipped to the length crawlers actually display.
+const firstBlockText = entry.body
+  ?.find((block: any) => block._type === 'block' && block.children)
+  ?.children.map((child: any) => child.text)
+  .join(' ');
+const rawDescription = String(firstBlockText || '').replace(/\s+/g, ' ').trim();
+const metaDescription = rawDescription
+  ? rawDescription.length > 155
+    ? `${rawDescription.slice(0, 152).replace(/[,.;:\s]+$/, '')}...`
+    : rawDescription
+  : `${entry.title} — a logbook entry from Svazer The Great.`;
 ---
 
-<MagazineLayout title={entry.title}>
+<MagazineLayout
+  title={entry.title}
+  description={metaDescription}
+  path={`/logbook/${slug}`}
+  image={entry.heroImage ? urlFor(entry.heroImage).width(1200).height(630).fit('crop').url() : '/og/default.png'}
+  imageAlt={entry.title}
+  ogType="article"
+>
   {entry.heroImage && (
     <div class="project-hero-wrapper">
       <img src={urlFor(entry.heroImage).url()} alt={entry.title} class="project-hero-img" />

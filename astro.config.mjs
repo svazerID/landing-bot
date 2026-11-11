@@ -4,6 +4,8 @@ import sanity from '@sanity/astro';
 import react from '@astrojs/react';
 
 export default defineConfig({
+  // Used for absolute URLs (canonical, sitemap, og:url).
+  site: 'https://svazer.us.ci',
   integrations: [
     sanity({
       projectId: "gwlcf911",

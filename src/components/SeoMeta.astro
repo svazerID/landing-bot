@@ -1,0 +1,53 @@
+---
+// Shared Open Graph + Twitter Card metadata.
+// Both layouts render this so every page gets the same tag set.
+
+import { SITE, SITE_NAME } from '../utils/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Pathname on this site, e.g. "/projects/alsya-api". Used for absolute URLs. */
+  path: string;
+  /** Absolute URL of the 1200x630 preview image. */
+  image: string;
+  /** Alternate "browser"/"article" type for detail pages. */
+  type?: 'website' | 'article';
+  /** Optional image description for accessibility/crawlers. */
+  imageAlt?: string;
+  /** Set false on error pages so crawlers get noindex and no canonical. */
+  indexable?: boolean;
+}
+
+const { title, description, path, image, type = 'website', imageAlt = title, indexable = true } = Astro.props;
+
+// Normalise trailing slashes so "/resume/" and "/resume" share one canonical URL.
+const cleanPath = path !== '/' ? path.replace(/\/+$/, '') : '';
+const canonical = `${SITE}${cleanPath}`;
+
+// Only append the site name when it is not already part of the title.
+// Server-rendered <title> tags already differ per layout, so the OG title is
+// composed here rather than reused verbatim.
+const baseTitle = title.replace(/\s*\|\s*Svazer The Great$/, '').replace(/\s*\|\s*Svazer$/, '');
+const fullTitle = baseTitle.startsWith(SITE_NAME) ? baseTitle : `${baseTitle} | ${SITE_NAME}`;
+---
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:image:alt" content={imageAlt} />
+
+{indexable ? <link rel="canonical" href={canonical} /> : <meta name="robots" content="noindex, follow" />}

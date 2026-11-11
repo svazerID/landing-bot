@@ -1,14 +1,30 @@
 ---
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
+import SeoMeta from '../components/SeoMeta.astro';
+import { SITE } from '../utils/site';
 
 interface Props {
   title: string;
   description?: string;
   projects?: any[];
+  /** Pathname for canonical/og:url. Defaults to the current request path. */
+  path?: string;
+  /** Preview image path; defaults to the site-wide card. */
+  image?: string;
+  imageAlt?: string;
 }
 
-const { title, description = "Svazer The Great - Digital Ecosystem", projects = [] } = Astro.props;
+const {
+  title,
+  description = "Svazer The Great - Digital Ecosystem",
+  projects = [],
+  path = Astro.url.pathname,
+  image = '/og/default.png',
+  imageAlt,
+} = Astro.props;
+
+const ogImage = new URL(image, SITE).href;
 ---
 
 <!DOCTYPE html>
@@ -18,6 +34,7 @@ const { title, description = "Svazer The Great - Digital Ecosystem", projects = 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <SeoMeta title={title} description={description} path={path} image={ogImage} imageAlt={imageAlt} />
 
     <!-- Lucide Icons -->
     <script is:inline src="https://unpkg.com/lucide@0.460.0"></script>

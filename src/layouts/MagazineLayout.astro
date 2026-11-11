@@ -2,14 +2,36 @@
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import Footer from '../components/Footer.astro';
+import SeoMeta from '../components/SeoMeta.astro';
+import { SITE } from '../utils/site';
 
 interface Props {
   title: string;
   backgroundColor?: string;
   description?: string;
+  /** Pathname for canonical/og:url. Defaults to the current request path. */
+  path?: string;
+  /** Preview image path; defaults to the site-wide card. */
+  image?: string;
+  imageAlt?: string;
+  /** Use "article" for logbook entries. */
+  ogType?: 'website' | 'article';
+  /** Set false on error pages. */
+  indexable?: boolean;
 }
 
-const { title, backgroundColor, description = "Svazer The Great - Project Detail" } = Astro.props;
+const {
+  title,
+  backgroundColor,
+  description = "Svazer The Great - Project Detail",
+  path = Astro.url.pathname,
+  image = '/og/default.png',
+  imageAlt,
+  ogType = 'website',
+  indexable = true,
+} = Astro.props;
+
+const ogImage = new URL(image, SITE).href;
 ---
 
 <!DOCTYPE html>
@@ -19,6 +41,7 @@ const { title, backgroundColor, description = "Svazer The Great - Project Detail
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} | Svazer The Great</title>
+    <SeoMeta title={title} description={description} path={path} image={ogImage} imageAlt={imageAlt} type={ogType} indexable={indexable} />
     
     <!-- Lucide Icons -->
     <script is:inline src="https://unpkg.com/lucide@0.460.0"></script>

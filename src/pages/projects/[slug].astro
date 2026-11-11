@@ -202,9 +202,19 @@ const projectColors: Record<string, string> = {
 };
 
 const projectBgColor = project.themeHex || projectColors[project.slug.current] || colors[currentIndex % colors.length];
+
+// Each project has a generated 1200x630 card in public/og/<slug>.png.
+const ogImage = `/og/${project.slug.current}.png`;
 ---
 
-<MagazineLayout title={project.title} description={project.description} backgroundColor={projectBgColor}>
+<MagazineLayout
+  title={project.title}
+  description={project.description}
+  backgroundColor={projectBgColor}
+  path={`/projects/${project.slug.current}`}
+  image={ogImage}
+  imageAlt={`${project.title} preview`}
+>
   {project.pageHeroImage && (
     <div class="project-hero-wrapper">
       <img src={typeof project.pageHeroImage === 'string' ? project.pageHeroImage : urlFor(project.pageHeroImage).url()} alt={project.title} class="project-hero-img" />

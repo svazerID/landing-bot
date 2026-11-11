@@ -165,10 +165,14 @@ const liveDomainCount = new Set(
 
 const siteTitle = "Svazer The Great | Digital Ecosystem";
 const siteDescription = "The digital portfolio of Svazer The Great. Building advanced AI integrations, web applications, and automation ecosystems.";
+
+// Meta description carries the real counts, so the preview card and the page
+// always agree with what the site actually links to.
+const ogDescription = `${projectCount} live products across ${liveDomainCount} domains: APIs, media platforms, WhatsApp automation and web tools. The digital portfolio of Svazer The Great.`;
 const bio = "hi, svazer here. welcome to the digital playground of svazer the great. a space dedicated to advanced ai integrations, web applications, and automation engineering. we build complete digital ecosystems, from sophisticated bots to high-performance media platforms.";
 ---
 
-<HomeLayout title={siteTitle} description={siteDescription} projects={projects}>
+<HomeLayout title={siteTitle} description={ogDescription} path="/" projects={projects}>
   <section class="hero-immersive section-snap" id="top">
     <div class="hero-parallax-wrapper">
       <h1 id="hero-title" class="hero-massive-text">SVAZER THE GREAT</h1>
