@@ -2,7 +2,7 @@
 import MagazineLayout from '../layouts/MagazineLayout.astro';
 ---
 
-<MagazineLayout title="Resume | Svazer" path="/resume" description="Background, stack and shipped work of Svazer The Great. Full-time bot developer building a 14-project ecosystem across APIs, media platforms and automation.">
+<MagazineLayout title="Resume | Svazer" path="/resume" description="Background, stack and shipped work of Svazer The Great. Building a 14-project ecosystem across APIs, media platforms, automation and AI integration.">
   <style>
     .resume-container {
       max-width: 800px;
@@ -211,6 +211,87 @@ import MagazineLayout from '../layouts/MagazineLayout.astro';
     .skill-category ul li span.cert-org {
       color: var(--accents-5);
     }
+
+    /* Project index: a compact table of every live project. */
+    .project-table {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid var(--accents-2);
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 1rem;
+      align-items: baseline;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--accents-1);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-row:hover .project-name {
+      color: var(--accents-5);
+    }
+
+    .project-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: color 0.2s ease;
+    }
+
+    .project-kind {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accents-5);
+      white-space: nowrap;
+    }
+
+    .project-line {
+      grid-column: 1 / -1;
+      color: var(--accents-6);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    @media (max-width: 520px) {
+      .project-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 640px) {
+      .stats-strip {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accents-5);
+      margin-top: 0.4rem;
+    }
   </style>
 
   <main>
@@ -219,9 +300,9 @@ import MagazineLayout from '../layouts/MagazineLayout.astro';
       <!-- Hero Header -->
       <section class="hero-section">
         <h1>Svazer</h1>
-        <h2>Software Engineer & AI Integrator</h2>
+        <h2>Software Engineer &amp; AI Integrator</h2>
         <p>
-          Software Engineer with deep expertise in Node.js automation, web applications, and AI integration. Creator of the Svazer The Great ecosystem, encompassing REST APIs, CDNs, media tools, and comprehensive automation platforms. Passionate about building elegant architectures and scalable digital ecosystems.
+          I build and run a 14-project ecosystem of APIs, streaming platforms, bots and web tools, all publicly reachable on their own domains. Most of it is TypeScript and Node.js on Cloudflare Workers, with Astro and Sanity behind this site. I integrate third-party AI models into working products rather than training models myself.
         </p>
 
         <div class="contact-links">
@@ -230,6 +311,9 @@ import MagazineLayout from '../layouts/MagazineLayout.astro';
           </a>
           <a href="https://github.com/svazerID" target="_blank" rel="noopener noreferrer">
             <i data-lucide="github" style="width: 18px; height: 18px;"></i> GitHub
+          </a>
+          <a href="/gallery">
+            <i data-lucide="arrow-up-right" style="width: 18px; height: 18px;"></i> Gallery
           </a>
         </div>
 
@@ -242,64 +326,147 @@ import MagazineLayout from '../layouts/MagazineLayout.astro';
         </div>
       </section>
 
-      <!-- Professional Journey -->
+      <!-- At a glance -->
       <section class="resume-section">
-        <h3 class="resume-section-title">Professional Journey</h3>
-
-        <div class="resume-item">
-          <div class="resume-date">2024 – Present</div>
-          <div class="resume-content">
-            <h4>Creator & Lead Developer</h4>
-            <p class="meta">Takina MD (WhatsApp Bot) <span>&bull; Indonesia &bull; Full-time</span></p>
-            <ul>
-              <li>Built and maintained a WhatsApp Multi-Device bot with 500+ plugins using Node.js (ES Modules) and Baileys library.</li>
-              <li>Wired the bot to AI providers including GPT-4, Gemini, Claude, DeepSeek, and Qwen for intelligent chat responses.</li>
-              <li>Designed a modular plugin architecture supporting hot-reload, auto-discovery, and 15+ command categories.</li>
-              <li>Implemented a comprehensive RPG game system with 55 plugins covering dungeon, PvP, trading, and pet systems.</li>
-            </ul>
-          </div>
+        <h3 class="resume-section-title">At a Glance</h3>
+        <div class="stats-strip">
+          {[
+            { value: '14', label: 'Live projects' },
+            { value: '135', label: 'API endpoints' },
+            { value: '9', label: 'API categories' },
+            { value: '19', label: 'Syntax languages' },
+          ].map((stat) => (
+            <div>
+              <div class="stat-value">{stat.value}</div>
+              <div class="stat-label">{stat.label}</div>
+            </div>
+          ))}
         </div>
-
-        <div class="resume-item">
-          <div class="resume-date">2023 – Present</div>
-          <div class="resume-content">
-            <h4>Software Architect & Full-Stack Developer</h4>
-            <p class="meta">Various Clients <span>&bull; Indonesia &bull; Freelance</span></p>
-            <ul>
-              <li>Developed and maintained digital platforms for multiple clients, providing scalable automation services.</li>
-              <li>Built custom automation solutions including group management, media downloading, and AI integration.</li>
-            </ul>
-          </div>
-        </div>
+        <p style="color: var(--accents-6); line-height: 1.6; margin: 0;">
+          Every number above is counted, not estimated: 135 operations in the published OpenAPI 3.0 document for Alsya API, spread over nine tagged categories, and 19 syntax languages highlighted by Zerpaste. Every project listed below is online on its own domain.
+        </p>
       </section>
 
-      <!-- Projects -->
+      <!-- What I work on -->
       <section class="resume-section">
-        <h3 class="resume-section-title">Projects</h3>
+        <h3 class="resume-section-title">What I Work On</h3>
 
         <div class="resume-item">
-          <div class="resume-date">2024</div>
+          <div class="resume-date">APIs</div>
           <div class="resume-content">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
-              <h4 style="margin: 0;">Takina MD</h4>
-              <a href="https://github.com/svazerID" target="_blank" rel="noreferrer" style="font-family: 'Geist Mono', monospace; font-size: 0.85rem; color: var(--accents-5); text-decoration: none; display: flex; align-items: center; gap: 4px;">
-                github.com/svazerID <i data-lucide="external-link" style="width: 12px; height: 12px;"></i>
-              </a>
-            </div>
-            <p class="meta">Creator & Lead Developer</p>
+            <h4>Public APIs with published contracts</h4>
             <ul>
-              <li>Architected a comprehensive ecosystem with 14 standalone projects including REST APIs, CDNs, AI Chatbots, and utility web apps.</li>
-              <li>Built a Jadibot engine allowing users to clone the bot to their own WhatsApp numbers with independent sessions and shared database.</li>
-              <li>Implemented SQLite persistence with WAL mode, auto-save every 5 seconds, and Worker Thread architecture for crash recovery.</li>
-              <li>Developed AI Rich Formatting system for native WhatsApp rendering of code blocks, tables, and hyperlinks.</li>
+              <li>Alsya API exposes 135 endpoints across AI, tools, search, download, stalker, anime, news, maker and random, documented in OpenAPI 3.0 with a live Swagger UI so each endpoint can be tried from the browser.</li>
+              <li>Media Downloader API turns a single URL into a direct file link for YouTube, Spotify, X, Facebook, Dailymotion and Vimeo, without an API key, with full docs and a health endpoint for uptime checks.</li>
+              <li>Svazer CDN accepts drag &amp; drop or a single POST request, stores files up to 25 MB, and returns a permanent, shareable <code>/file/&lt;name&gt;</code> link.</li>
             </ul>
             <div class="tags">
-              {['Node.js', 'Baileys', 'SQLite', 'FFmpeg', 'ES Modules'].map(tech => (
+              {['Node.js', 'TypeScript', 'OpenAPI 3.0', 'Swagger UI', 'REST'].map(tech => (
                 <span class="tag">{tech}</span>
               ))}
             </div>
           </div>
         </div>
+
+        <div class="resume-item">
+          <div class="resume-date">Media</div>
+          <div class="resume-content">
+            <h4>Streaming catalogs, built end to end</h4>
+            <ul>
+              <li>Four separate streaming platforms: ZerDonghua for Chinese animation, ZerAnime with seasonal listings and watch history, Zermovie with posters and trailers, and ZerDrakor for Korean drama with a continue-watching shelf.</li>
+              <li>Each one is its own deployment with its own domain, catalog, search, episode selection and in-page player, not a skin over one shared codebase.</li>
+            </ul>
+            <div class="tags">
+              {['TypeScript', 'Astro', 'Cloudflare Workers', 'HTML'].map(tech => (
+                <span class="tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-date">AI</div>
+          <div class="resume-content">
+            <h4>Third-party model integration</h4>
+            <ul>
+              <li>SvazerPRD is a product-requirements builder where the AI drafts the plan, design and implementation notes alongside you. It routes between several hosted models rather than depending on one vendor.</li>
+              <li>Svazer AI is a multimodal chat interface: upload an image, analyse data, write code, or talk to it with voice, all inside a single thread.</li>
+              <li>The work here is the integration layer — streaming responses, model selection, image and voice input — not training or owning the underlying models.</li>
+            </ul>
+            <div class="tags">
+              {['LLM integration', 'Multimodal input', 'Model routing', 'Streaming'].map(tech => (
+                <span class="tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-date">Bots</div>
+          <div class="resume-content">
+            <h4>WhatsApp automation</h4>
+            <ul>
+              <li>Svazer Bot Gateway lets someone run a WhatsApp bot without a server of their own: the gateway handles pairing, session storage and process uptime while the user uploads a script and watches live logs from a dashboard.</li>
+              <li>Takina MD is a Multi-Device bot with a plugin set that can be added or reloaded without restarting, and independent sessions per number.</li>
+            </ul>
+            <div class="tags">
+              {['Node.js', 'Baileys', 'Session management', 'ES Modules'].map(tech => (
+                <span class="tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-item">
+          <div class="resume-date">Web tools</div>
+          <div class="resume-content">
+            <h4>Small utilities that do one thing well</h4>
+            <ul>
+              <li>Zerpaste is a pastebin with highlighting for 19 languages, optional password protection, unlisted mode, burn-after-read and expiry from 10 minutes up to never.</li>
+              <li>Svazer Playlist reads any public Spotify playlist without a login, including cover art, search and a mini player.</li>
+              <li>Semantika is an interactive reference for semantic HTML, showing each element's rendered result next to the markup that produces it.</li>
+            </ul>
+            <div class="tags">
+              {['TypeScript', 'Syntax highlighting', 'Astro', 'Cloudflare Workers'].map(tech => (
+                <span class="tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project index -->
+      <section class="resume-section">
+        <h3 class="resume-section-title">All 14 Projects</h3>
+
+        <div class="project-table">
+          {[
+            { name: 'Alsya API', kind: 'API', line: '135 endpoints in nine categories, with live docs and Swagger.', url: 'https://alsya.svazer.eu.cc' },
+            { name: 'Svazer CDN', kind: 'API', line: 'File hosting up to 25 MB with permanent shareable links.', url: 'https://cdn.svazer.eu.cc' },
+            { name: 'Media Downloader API', kind: 'API', line: 'One URL in, a direct file link out, across six platforms.', url: 'https://download.svazer.us.ci' },
+            { name: 'Svazer AI', kind: 'AI', line: 'Multimodal chat with image, data and voice input.', url: 'https://ai.svazer.eu.cc' },
+            { name: 'SvazerPRD', kind: 'AI', line: 'Turns a rough idea into a structured spec with AI help.', url: 'https://prd.svazer.us.ci' },
+            { name: 'Svazer Bot Gateway', kind: 'Bot', line: 'Runs a WhatsApp bot without a server, with live logs.', url: 'https://gtwbot.svazer.us.ci' },
+            { name: 'Takina MD', kind: 'Bot', line: 'Multi-Device WhatsApp bot with reloadable plugins.', url: 'https://takina.svazer.eu.cc' },
+            { name: 'ZerDonghua', kind: 'Streaming', line: 'Chinese animation catalog with an in-page player.', url: 'https://donghua.svazer.us.ci' },
+            { name: 'ZerAnime', kind: 'Streaming', line: 'Seasonal anime listings and persistent watch history.', url: 'https://anime.svazer.us.ci' },
+            { name: 'Zermovie', kind: 'Streaming', line: 'Film catalog with posters, synopses and trailers.', url: 'https://movie.svazer.us.ci' },
+            { name: 'ZerDrakor', kind: 'Streaming', line: 'Korean drama with a continue-watching shelf.', url: 'https://drakor.svazer.us.ci' },
+            { name: 'Svazer Playlist', kind: 'Web tool', line: 'Public Spotify playlists with no login required.', url: 'https://spotify-playlist.svazer.us.ci' },
+            { name: 'Zerpaste', kind: 'Web tool', line: 'Pastebin with 19 languages, password and expiry options.', url: 'https://zerpaste.svazer.workers.dev' },
+            { name: 'Semantika', kind: 'Web tool', line: 'Interactive semantic HTML reference with live examples.', url: 'https://semantika.svazer.us.ci' },
+          ].map((project) => (
+            <a class="project-row" href={project.url} target="_blank" rel="noreferrer">
+              <span class="project-name">{project.name}</span>
+              <span class="project-kind">{project.kind}</span>
+              <p class="project-line">{project.line}</p>
+            </a>
+          ))}
+        </div>
+
+        <p style="color: var(--accents-5); font-family: 'Geist Mono', monospace; font-size: 0.8rem; margin-top: 1.5rem;">
+          Screenshots of all of them are collected at <a href="/gallery" style="color: var(--foreground);">/gallery</a>.
+        </p>
       </section>
 
       <!-- Education -->
@@ -309,8 +476,8 @@ import MagazineLayout from '../layouts/MagazineLayout.astro';
         <div class="resume-item">
           <div class="resume-date">Self-Taught</div>
           <div class="resume-content">
-            <h4>Software Engineering & Systems Architecture</h4>
-            <p class="meta">Autodidact &bull; Online Resources & Practice</p>
+            <h4>Software Engineering &amp; Systems Architecture</h4>
+            <p class="meta">Autodidact &bull; Online Resources &amp; Practice</p>
           </div>
         </div>
       </section>
@@ -323,35 +490,39 @@ import MagazineLayout from '../layouts/MagazineLayout.astro';
 
           <div style="display: flex; flex-direction: column; gap: 2rem;">
             <div class="skill-category">
-              <h4>BACKEND</h4>
-              <p>Node.js, ES Modules, Baileys WhatsApp, SQLite, Worker Threads, FFmpeg, REST APIs</p>
+              <h4>Backend &amp; Runtime</h4>
+              <p>Node.js, TypeScript, ES Modules, Cloudflare Workers, REST APIs, OpenAPI 3.0, SQLite, FFmpeg</p>
             </div>
             <div class="skill-category">
-              <h4>AI & INTEGRATION</h4>
-              <p>GPT-4, Gemini, Claude, DeepSeek, Qwen, Image Generation, AI Formatting</p>
+              <h4>Frontend</h4>
+              <p>Astro, HTML, CSS, Sanity (headless CMS), SSE, responsive layouts</p>
             </div>
             <div class="skill-category">
-              <h4>LANGUAGES</h4>
-              <p>JavaScript (Expert), SQL (Intermediate), Bash (Intermediate), Indonesian (Native)</p>
+              <h4>AI &amp; Integration</h4>
+              <p>Third-party LLM integration, model routing, multimodal input (image and voice), streaming responses. I do not train or host my own models.</p>
+            </div>
+            <div class="skill-category">
+              <h4>Languages</h4>
+              <p>TypeScript, JavaScript, HTML/CSS, SQL, Bash &bull; Indonesian (Native), English (Professional)</p>
             </div>
           </div>
 
           <div style="display: flex; flex-direction: column; gap: 2.5rem;">
             <div class="skill-category">
-              <h4>Certifications</h4>
+              <h4>Bot Platforms</h4>
               <ul>
-                <li><strong>WhatsApp Multi-Device API</strong> <span class="cert-org">Baileys</span></li>
-                <li><strong>Node.js Advanced Patterns</strong> <span class="cert-org">Self-Study</span></li>
-                <li><strong>AI Model Integration</strong> <span class="cert-org">Multiple Providers</span></li>
+                <li><strong>WhatsApp Multi-Device</strong> <span class="cert-org">Baileys</span></li>
+                <li><strong>Session isolation</strong> <span class="cert-org">Per-number</span></li>
+                <li><strong>Plugin hot-reload</strong> <span class="cert-org">No restart</span></li>
               </ul>
             </div>
 
             <div class="skill-category">
-              <h4>Community & Contribution</h4>
+              <h4>Open Source</h4>
               <div>
-                <p style="font-weight: 600; margin-bottom: 0.25rem;">Open Source</p>
-                <p style="color: var(--accents-5); font-size: 0.9rem; margin-bottom: 0.5rem;">Open Source Contributor</p>
-                <p style="color: var(--accents-6); font-size: 0.95rem;">Active in the open-source development community, sharing knowledge and helping developers build their own automation ecosystems.</p>
+                <p style="font-weight: 600; margin-bottom: 0.25rem;">20 public repositories</p>
+                <p style="color: var(--accents-5); font-size: 0.9rem; margin-bottom: 0.5rem;">github.com/svazerID</p>
+                <p style="color: var(--accents-6); font-size: 0.95rem;">The source behind several of these projects is public, including this site. The rest are deployed from private repositories.</p>
               </div>
             </div>
           </div>
