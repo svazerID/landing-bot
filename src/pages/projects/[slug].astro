@@ -47,13 +47,13 @@ allProjects = [
     homepageImage: "/projects/svazer-ai.jpg"
   },
   {
-    title: "Axd Downloader",
+    title: "Media Downloader API",
     description: "A media download API you can call from anything. Send one URL, get back a JSON response with a direct file link, no API key required. Supports YouTube, Spotify, X/Twitter, Facebook, Dailymotion and Vimeo, with full OpenAPI docs and a health endpoint for uptime checks.",
-    slug: { current: "axd-downloader" },
+    slug: { current: "media-downloader-api" },
     projectUrl: "https://download.svazer.us.ci",
     themeHex: "#2d1b11",
     device: "browser",
-    homepageImage: "/projects/axd-downloader.jpg"
+    homepageImage: "/projects/media-downloader-api.jpg"
   },
   {
     title: "Svazer Playlist",
@@ -161,8 +161,8 @@ if (project) {
     project.bodyRaw = "<p>Svazer CDN is a small file hosting endpoint built for one job: give a file a permanent, shareable link. Upload through the browser by selecting or dragging a file, or send it from code with a single POST request and receive back a JSON response with the public URL.</p><br/><p>Files up to 25 MB are accepted in any format and served from a <code>/file/&lt;filename&gt;</code> path, which keeps them easy to embed in bots, documents, or web pages without depending on a third-party host.</p>";
   } else if (project.slug.current === 'svazer-ai') {
     project.bodyRaw = "<p>Svazer AI is a browser-based chat interface for a multimodal assistant. It answers general questions, writes and debugs code, analyzes uploaded images, and works through technical problems in a structured way.</p><br/><p>Beyond text, the interface supports voice conversation, web search, image generation and data analysis, keeping everything in a single thread. It runs entirely in the browser on any device, with no installation required.</p>";
-  } else if (project.slug.current === 'axd-downloader') {
-    project.bodyRaw = "<p>Axd Downloader is a <em>media download API</em> rather than a web interface. Send a single URL to the endpoint and it replies with JSON containing a direct file link, so it drops cleanly into bots, scripts, or any application that needs media extraction.</p><br/><p>It handles YouTube, Spotify, X/Twitter, Facebook, Dailymotion and Vimeo, and requires no API key. The service ships with full OpenAPI documentation plus a <code>/health</code> endpoint for uptime monitoring, and downloaded files are removed automatically after a configurable time-to-live.</p>";
+  } else if (project.slug.current === 'media-downloader-api') {
+    project.bodyRaw = "<p>Media Downloader API is a download service you call rather than click. Send a single URL to the endpoint and it replies with JSON containing a direct file link, so it drops cleanly into bots, scripts, or any application that needs media extraction. No API key is required.</p><br/><p>It handles YouTube, Spotify, X/Twitter, Facebook, Dailymotion and Vimeo. Spotify links are resolved by reading the track title and matching it on YouTube, so the result is a YouTube equivalent rather than a rip from Spotify, and single tracks only. The service ships with full OpenAPI documentation plus a <code>/health</code> endpoint, and every downloaded file is removed automatically after a configurable time-to-live.</p>";
   } else if (project.slug.current === 'svazer-playlist') {
     project.bodyRaw = "<p>Svazer Playlist is a web-based Spotify playlist player that works without a Spotify account or login. Paste any public playlist link and the full track list loads right in the browser, complete with cover art and artist names.</p><br/><p>The interface includes instant search across the loaded tracks, a mini player docked at the bottom, a queue view to see what is coming up next, and a light/dark theme toggle for comfortable listening at any hour.</p>";
   } else if (project.slug.current === 'zerdonghua') {
