@@ -186,28 +186,50 @@ function initKineticEngine() {
   const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
   if (hamburgerBtn && mobileMenuOverlay) {
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('active');
-      mobileMenuOverlay.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
-    });
-    mobileNavLinks.forEach(link => link.addEventListener('click', () => {
-      hamburgerBtn.classList.remove('active');
-      mobileMenuOverlay.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    }));
+    // init() runs from both `load` and `astro:page-load`, and initKineticEngine
+    // can run again on navigation. Without this guard the click listener gets
+    // attached multiple times, so each tap toggles the class twice and the menu
+    // never appears. Bind once per element.
+    if (!hamburgerBtn.dataset.menuBound) {
+      hamburgerBtn.dataset.menuBound = '1';
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+      mobileNavLinks.forEach(link => link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }));
+    }
   }
 }
 
+// Astro's ClientRouter fires `astro:page-load` on the very first load too, and
+// the fallback below also runs `init()` on `load`. Without a guard that means
+// two full init passes: the kinetic engine tears down and rebuilds every
+// ScrollTrigger twice, and any listener it attaches is attached twice. Make
+// init idempotent for the initial document, and let the router re-run it only
+// after an actual navigation.
+let lastInitUrl = null;
+
+function initOnce() {
+  // Same URL means this is still the initial load, not a client-side navigation.
+  if (lastInitUrl === location.href) return;
+  lastInitUrl = location.href;
+  init();
+}
+
 // Support Astro View Transitions
-document.addEventListener('astro:page-load', init);
+document.addEventListener('astro:page-load', initOnce);
 
 // Fallback for initial load if transitions aren't enabled yet
 if (!window.astroTransitionAttached) {
   if (document.readyState === 'complete') {
-    init();
+    initOnce();
   } else {
-    window.addEventListener('load', init);
+    window.addEventListener('load', initOnce);
   }
   window.astroTransitionAttached = true;
 }

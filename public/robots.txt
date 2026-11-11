@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://svazer.us.ci/sitemap.xml

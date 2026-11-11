@@ -97,16 +97,21 @@ function initProject() {
   const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
   const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
   if (hamburgerBtn && mobileMenuOverlay) {
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('active');
-      mobileMenuOverlay.classList.toggle('active');
-      document.body.classList.toggle('menu-open');
-    });
-    mobileNavLinks.forEach(link => link.addEventListener('click', () => {
-      hamburgerBtn.classList.remove('active');
-      mobileMenuOverlay.classList.remove('active');
-      document.body.classList.remove('menu-open');
-    }));
+    // Same guard as public/script.js: bind once per element so a second init
+    // pass cannot stack a duplicate toggle handler that cancels the first.
+    if (!hamburgerBtn.dataset.menuBound) {
+      hamburgerBtn.dataset.menuBound = '1';
+      hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.classList.toggle('active');
+        mobileMenuOverlay.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      });
+      mobileNavLinks.forEach(link => link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }));
+    }
   }
 }
 
