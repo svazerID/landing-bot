@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # cloudflare wrangler build cache
 .wrangler/
+
+# lockfile sengaja tidak di-commit: npm clean-install gagal di build Cloudflare
+package-lock.json
