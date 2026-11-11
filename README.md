@@ -1,132 +1,197 @@
-# 🖥️ Svazer The Great
+# Svazer The Great
 
-**Svazer The Great** is a personal digital portfolio and ecosystem showcase for **Svazer The Great**.  
-It showcases projects, logbook entries, system architecture, and more—built with **Astro + React** and powered by **Sanity.io** as a headless CMS.
+Personal portfolio and project showcase for **Svazer The Great**, live at
+[svazer.us.ci](https://svazer.us.ci).
 
-![Svazer The Great Preview](https://cdn.svazer.eu.cc/file/adef03f6.jpeg) <!-- optional placeholder -->
+The homepage lists 14 projects rendered as alternating panels, each in a mock
+device frame: a browser window for desktop-oriented sites, an iPhone for
+mobile-first ones. Each panel links to the live project and to a detail page on
+this site.
+
+Beyond the homepage, the site also has a logbook (`/logbook`), a resume
+(`/resume`), and an embedded Sanity Studio (`/studio`).
 
 ---
 
-## 🚀 Quick Start
+## Live sites
+
+| Site | URL |
+| --- | --- |
+| Portfolio | <https://svazer.us.ci> |
+| Repository | <https://github.com/svazerID/landing-bot> |
+
+---
+
+## Projects shown
+
+| # | Project | Live URL | Frame |
+| --- | --- | --- | --- |
+| 01 | Alsya API | <https://alsya.svazer.eu.cc> | browser |
+| 02 | Svazer CDN | <https://cdn.svazer.eu.cc> | browser |
+| 03 | Svazer AI | <https://ai.svazer.eu.cc> | iPhone |
+| 04 | Media Downloader API | <https://download.svazer.us.ci> | browser |
+| 05 | Svazer Playlist | <https://spotify-playlist.svazer.us.ci> | iPhone |
+| 06 | ZerDonghua | <https://donghua.svazer.us.ci> | browser |
+| 07 | ZerAnime | <https://anime.svazer.us.ci> | browser |
+| 08 | Zermovie | <https://movie.svazer.us.ci> | browser |
+| 09 | ZerDrakor | <https://drakor.svazer.us.ci> | browser |
+| 10 | Svazer Bot Gateway | <https://gtwbot.svazer.us.ci> | browser |
+| 11 | Takina MD | <https://takina.svazer.eu.cc> | iPhone |
+| 12 | Zerpaste | <https://zerpaste.svazer.workers.dev> | iPhone |
+| 13 | SvazerPRD | <https://prd.svazer.us.ci> | iPhone |
+| 14 | Semantika | <https://semantika.svazer.us.ci> | iPhone |
+
+---
+
+## Tech stack
+
+| Layer | What is used |
+| --- | --- |
+| Framework | [Astro 6](https://astro.build) |
+| UI | [React 19](https://react.dev) via `@astrojs/react` |
+| Styling | Plain CSS (`src/styles/global.css`) plus scoped `<style>` blocks |
+| CMS | [Sanity.io](https://www.sanity.io) — project `gwlcf911`, dataset `production` |
+| Icons | [Lucide](https://lucide.dev) loaded from unpkg via `data-lucide` attributes |
+| Deploy | Cloudflare Workers through `@astrojs/cloudflare` |
+| Node | `>=22.12.0` |
+
+Astro is configured with SSR (no prerendering) and the Cloudflare adapter, so the
+build output is a Worker entry plus static assets, not a plain static folder.
+
+---
+
+## Getting started
 
 ```bash
-# 1️⃣ Clone the repo
 git clone https://github.com/svazerID/landing-bot.git
 cd landing-bot
 
-# 2️⃣ Install dependencies
+# note: this repo intentionally has no lockfile, see the section below
 npm install
 
-# 3️⃣ Set up environment variables (see .env.example)
-cp .env.example .env
-# Fill in SANITY_PROJECT_ID, SANITY_DATASET, SANITY_API_TOKEN
-
-# 4️⃣ Start the dev server
-npm run dev
+npm run dev        # http://localhost:4321
 ```
 
-Open <http://localhost:4321> to see the site in action.
+There are no environment variables to set for a normal local run. The Sanity
+project ID and dataset are hardcoded in `astro.config.mjs` and
+`src/utils/sanity.ts`.
+
+If the Sanity API is unreachable (for example a 403 from a restricted network),
+the pages fall back to the static project data in `src/pages/index.astro`, so
+the site still renders correctly.
+
+### Commands
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server on port 4321 |
+| `npm run build` | Production build into `dist/` |
+| `npm run preview` | Preview the production build |
+| `npx astro ...` | Any Astro CLI command |
+
+There is no test script. Verification is done by building and then checking the
+rendered output in a browser.
 
 ---
 
-## 🛠️ Technology Stack
-
-| Category      | Tech / Library                                   |
-|---------------|--------------------------------------------------|
-| **Framework** | [Astro 4.x](https://astro.build) (with React)   |
-| **UI Library**| [React](https://reactjs.org) (`@astrojs/react`) |
-| **Styling**   | CSS Modules + Custom CSS (`src/styles/`)        |
-| **CMS**       | [Sanity.io](https://www.sanity.io) (`@sanity/astro`) |
-| **TypeScript**| For type‑safe code (`tsconfig.json`)            |
-| **Icons**     | [Lucide React](https://lucide.dev)              |
-| **Deployment**| Optimized for Vercel (`@astrojs/vercel`)        |
-| **Node**      | `>=22.12.0`                                     |
-
----
-
-## 📂 Project Structure
+## Project structure
 
 ```
-Svazer The Great/
-├── .git/
-├── .vscode/
-├── docs/
-│   ├── audit.md
-│   ├── brand_interview.md
-│   ├── moodboard.md
-│   └── wireframe.md
+landing-bot/
 ├── public/
-│   ├── favicon.ico
-│   ├── favicon.svg
-│   ├── project.js
-│   ├── redline-running.png
-│   ├── retro-circuit.png
-│   ├── script.js
-│   └── setlists-md.png
+│   ├── projects/          # 14 project screenshots (JPEG)
+│   ├── favicon.svg, favicon.ico
+│   └── project.js, script.js
 ├── src/
-│   ├── components/     # Reusable React components (ProjectPanel, ReadingTile, …)
-│   ├── layouts/        # Layout components (HomeLayout.astro)
-│   ├── pages/          # Astro pages (index.astro, logbook/[slug].astro, …)
-│   ├── schema/         # Sanity schema types (project.ts, logbookEntry.ts, …)
-│   ├── styles/         # CSS modules & global styles
-│   └── utils/          # Utility files (sanity client setup)
-├── .gitignore
-├── AGENTS.md
+│   ├── components/        # ProjectPanel, Gallery, Manifesto, ReadingTile, ...
+│   ├── layouts/           # HomeLayout, MagazineLayout
+│   ├── pages/
+│   │   ├── index.astro            # homepage + project data
+│   │   ├── projects/[slug].astro  # project detail pages
+│   │   ├── logbook/               # logbook listing + entries
+│   │   ├── resume.astro
+│   │   ├── studio/[...index].astro
+│   │   └── 404.astro
+│   ├── schema/            # Sanity document types
+│   ├── styles/global.css
+│   └── utils/sanity.ts    # Sanity client + image URL builder
+├── docs/                  # brand notes, moodboard, wireframe, audit
 ├── astro.config.mjs
-├── check_projects.cjs
-├── package-lock.json
-├── package.json
-├── sanity.cli.ts
 ├── sanity.config.ts
-└── tsconfig.json
+└── package.json
 ```
 
-**Key files**
-- `astro.config.mjs` – Astro configuration
-- `sanity.config.ts` – Sanity studio configuration
-- `package.json` – Dependencies & npm scripts
-- `tsconfig.json` – TypeScript configuration
-- `src/pages/index.astro` – Homepage (fetches data from Sanity)
-- `src/components/ProjectPanel.astro` – Project showcase component
-- `src/components/ReadingTile.astro` – “Currently reading” widget
+### Where the project data lives
+
+Project data is defined twice and the two copies must stay in sync:
+
+- `src/pages/index.astro` — the `projects` array driving the homepage panels
+- `src/pages/projects/[slug].astro` — the same array, plus a `bodyRaw` string
+  per slug for the detail page
+
+When adding or renaming a project, update both files. Each entry looks like:
+
+```js
+{
+  title: "Zerpaste",
+  description: "...",
+  slug: { current: "zerpaste" },
+  projectUrl: "https://zerpaste.svazer.workers.dev",
+  themeHex: "#0a0f20",      // panel background tint
+  device: "iphone",         // or "browser"
+  homepageImage: "/projects/zerpaste.jpg"
+}
+```
+
+### Screenshots
+
+Each project has one screenshot in `public/projects/`, stored as JPEG at quality
+88 (PNG was tried and produced noticeably larger files for these images).
+
+- `device: "browser"` — desktop capture, roughly 1280–1500 px wide. Rendered in
+  a frame with a `16/10` aspect ratio.
+- `device: "iphone"` — mobile capture at **430×932**. The frame uses a `9/19.5`
+  aspect ratio, so a desktop screenshot placed here gets heavily cropped.
+
+When retaking a screenshot, wait for the page content to settle before
+capturing, otherwise the frame shows a loading state.
 
 ---
 
-## 🛠️ Development Commands
+## Deployment (Cloudflare)
 
-| Command                | Description                              |
-|------------------------|------------------------------------------|
-| `npm install`          | Install dependencies                     |
-| `npm run dev`          | Start dev server (`localhost:4321`)      |
-| `npm run build`        | Build production bundle (`dist/`)        |
-| `npm run preview`      | Preview production build locally         |
-| `npx astro ...`        | Run any Astro CLI command                |
+The site runs on Cloudflare Workers via `@astrojs/cloudflare`, deployed from the
+`main` branch of this repository.
 
-> **Note:** No test script is defined; testing is done manually or via external CI.
+Build settings used by Cloudflare:
 
----
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Output | `dist/` (Worker + assets) |
+| Node version | 22 or newer |
 
-## 🚀 Deployment (Vercel)
+### Why there is no lockfile
 
-1. Push the repository to GitHub / GitLab / Bitbucket.  
-2. Import the project in Vercel.  
-3. Vercel auto‑detects the Astro build and deploys it.  
+`package-lock.json` is deliberately **not committed** and is listed in
+`.gitignore`.
 
-**Environment variables required in Vercel:**
+A committed lockfile caused the Cloudflare build to fail during
+`npm clean-install` with the misleading error `npm error Exit handler never
+called!`. The lockfile had been generated on a machine pointed at a private npm
+mirror, so the build server could not resolve the dependency URLs. The file was
+removed before (commit `02e7fb0`) for the same reason, so it stays out.
 
-| Variable               | Description                              |
-|------------------------|------------------------------------------|
-| `SANITY_PROJECT_ID`    | Your Sanity project ID                   |
-| `SANITY_DATASET`       | Dataset name (usually `production`)      |
-| `SANITY_API_TOKEN`     | Token with read (and optionally write) access |
-
----
-
-## 📄 License
-
-This project is private and proprietary to **Svazer The Great.**  
-All rights reserved. Unauthorized copying, modification, or distribution is prohibited.
+Cloudflare therefore resolves dependencies from `package.json` on every build.
+Do not re-add the lockfile.
 
 ---
 
-*Made with ❤️ by the Svazer The Great team.*
+## License
+
+Released under the [MIT License](LICENSE).
+
+The MIT license covers the code in this repository. The third-party projects
+listed above (Alsya API, ZerAnime, Takina MD, and the rest) are separate works
+with their own terms, and the project screenshots in `public/projects/` are
+captures of those third-party sites.
