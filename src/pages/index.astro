@@ -152,9 +152,19 @@ projects = [
 
 // Derived at build time so the stat tiles cannot drift from the real list.
 const projectCount = projects.length;
-const aiModelCount = 43;
+// Count distinct live hosts, so a project listed twice never inflates the number.
+const liveDomainCount = new Set(
+  projects.map((p: any) => {
+    try {
+      return new URL(p.projectUrl).hostname;
+    } catch {
+      return null;
+    }
+  }).filter(Boolean)
+).size;
 
-const siteTitle = "Svazer The Great | Digital Ecosystem";const siteDescription = "The digital portfolio of Svazer The Great. Building advanced AI integrations, web applications, and automation ecosystems.";
+const siteTitle = "Svazer The Great | Digital Ecosystem";
+const siteDescription = "The digital portfolio of Svazer The Great. Building advanced AI integrations, web applications, and automation ecosystems.";
 const bio = "hi, svazer here. welcome to the digital playground of svazer the great. a space dedicated to advanced ai integrations, web applications, and automation engineering. we build complete digital ecosystems, from sophisticated bots to high-performance media platforms.";
 ---
 
@@ -290,7 +300,7 @@ const bio = "hi, svazer here. welcome to the digital playground of svazer the gr
           <div class="bento-kicker">PROJECT STATS</div>
           <div class="athletics-data">
             <div class="ath-row"><span class="ath-label">PROJECTS</span><span class="ath-value">{projectCount}</span></div>
-            <div class="ath-row"><span class="ath-label">AI MODELS</span><span class="ath-value">{aiModelCount}</span></div>
+            <div class="ath-row"><span class="ath-label">LIVE DOMAINS</span><span class="ath-value">{liveDomainCount}</span></div>
           </div>
         </div>
       </div>
