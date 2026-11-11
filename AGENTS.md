@@ -117,6 +117,7 @@ This is the most common source of bugs in this repo.
 | --- | --- |
 | `src/pages/index.astro` | `projects` array (~line 24) driving the homepage panels |
 | `src/pages/projects/[slug].astro` | The same array (~line 21) **plus** a `bodyRaw` string per slug |
+| `src/pages/gallery.astro` | The same array again, for the screenshot wall at `/gallery` |
 
 Both arrays are hardcoded and **override** whatever Sanity returns:
 
@@ -130,7 +131,7 @@ Change the arrays in these two files.
 
 When adding or renaming a project:
 
-1. Add/edit the entry in **both** files, keeping them identical.
+1. Add/edit the entry in **all three** files, keeping them identical.
 2. Add a `bodyRaw` branch in `[slug].astro` keyed by the same slug.
 3. Add a screenshot to `public/projects/`.
 4. Run `npm run build` and verify the panel count went up correctly.
@@ -222,6 +223,16 @@ are wrapped in `try/catch`. From some networks the Sanity API returns 403. This
 is harmless — the page falls back to the static arrays and `logbookEntries`
 stays empty. Do not treat it as a regression.
 
+### Trap: `main` is `display: contents`
+
+`global.css` sets `main { display: contents }` so the homepage sections can
+participate in the scroll-snap parent. A new page that wraps its content in
+`<main class="...">` therefore loses its own `max-width` and padding, and the
+content stretches edge to edge.
+
+Use a plain `<div>` as the page wrapper instead (see `src/pages/gallery.astro`).
+This is the earlier bug where the gallery title did not line up with the grid.
+
 ### Trap: prerender is disabled
 
 Every data page sets `export const prerender = false`. The build output is a
@@ -242,6 +253,7 @@ src/
     projects/[slug].astro    detail pages + duplicate array + bodyRaw
     logbook/index.astro      logbook listing (from Sanity)
     logbook/[slug].astro     logbook entry
+    gallery.astro            screenshot wall of all 14 projects
     resume.astro
     studio/[...index].astro  embedded Sanity Studio
     sitemap.xml.ts           dynamic sitemap

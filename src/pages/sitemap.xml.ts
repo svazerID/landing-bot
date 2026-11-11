@@ -50,6 +50,7 @@ export const GET: APIRoute = async () => {
     { loc: '', changefreq: 'weekly', priority: '1.0' },
     { loc: '/logbook', changefreq: 'weekly', priority: '0.8' },
     { loc: '/resume', changefreq: 'monthly', priority: '0.7' },
+    { loc: '/gallery', changefreq: 'monthly', priority: '0.7' },
   ];
 
   for (const slug of PROJECT_SLUGS) {
